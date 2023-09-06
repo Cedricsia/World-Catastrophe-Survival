@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import SidebarMobile from "./components/SidebarMobile";
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
+import SidebarMobile from "./Components/SidebarMobile";
 import Router from "./routes/Router";
+import ChatModal from "./Components/ChatModal";
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
@@ -13,6 +14,7 @@ function App() {
       <Sidebar />
       {sidebar && <SidebarMobile />}
       <div className="lg:ml-[17rem]">
+        <ChatModal />
         <Router />
       </div>
     </div>

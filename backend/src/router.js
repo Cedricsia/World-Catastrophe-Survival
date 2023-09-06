@@ -20,4 +20,8 @@ router.post("/items", itemControllers.add);
 
 /* ************************************************************************* */
 
+const potoControllers = require("./controllers/potoControllers");
+
+router.post("/gepeto", potoControllers.conversation);
+
 module.exports = router;
