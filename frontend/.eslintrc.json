@@ -33,6 +33,7 @@
       {
         "assert": "either"
       }
-    ]
+    ],
+    "react/prop-types": 0
   }
 }
