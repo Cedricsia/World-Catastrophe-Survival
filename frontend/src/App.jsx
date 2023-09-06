@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="font-noto flex">
       <Sidebar />
-      <div className="ml-[17rem]">
+      <div className="lg:ml-[17rem] w-full">
         <Router />
       </div>
     </div>
