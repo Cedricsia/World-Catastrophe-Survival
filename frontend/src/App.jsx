@@ -1,10 +1,22 @@
+import { useState } from "react";
 import "./App.css";
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
+import SidebarMobile from "./Components/SidebarMobile";
+import Router from "./routes/Router";
 import ChatModal from "./Components/ChatModal";
 
 function App() {
+  const [sidebar, setSidebar] = useState(false);
   return (
-    <div className="text-primary">
-      <ChatModal />
+    <div className="font-noto lg:flex">
+      <Navbar setSidebar={setSidebar} sidebar={sidebar} />
+      <Sidebar />
+      {sidebar && <SidebarMobile />}
+      <div className="lg:ml-[17rem]">
+        <ChatModal />
+        <Router />
+      </div>
     </div>
   );
 }
