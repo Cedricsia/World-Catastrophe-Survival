@@ -4,9 +4,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import SidebarMobile from "./components/SidebarMobile";
-/* eslint-disable import/extensions */
 import Router from "./routes/Router";
-
+/* eslint-disable import/extensions */
 import ChatModal from "./components/ChatModal";
 
 function App() {
