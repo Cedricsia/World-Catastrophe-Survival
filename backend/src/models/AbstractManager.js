@@ -33,6 +33,18 @@ class AbstractManager {
     this.table = table;
     this.database = database;
   }
+
+  getAll() {
+    database.query(`SELECT * FROM ${this.database}`);
+  }
+
+  getOne(id) {
+    database.query(`SELECT * FROM ${this.database} WHERE id = ?`, [id]);
+  }
+
+  deleteOne(id) {
+    database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
+  }
 }
 
 // Ready to export

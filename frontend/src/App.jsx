@@ -1,7 +1,24 @@
+import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import SidebarMobile from "./components/SidebarMobile";
+import Router from "./routes/Router";
+import ChatModal from "./components/ChatModal";
 
 function App() {
-  return <div className="text-primary">Home Page</div>;
+  const [sidebar, setSidebar] = useState(false);
+  return (
+    <div className="font-noto lg:flex">
+      <Navbar setSidebar={setSidebar} sidebar={sidebar} />
+      <Sidebar />
+      {sidebar && <SidebarMobile />}
+      <div className="lg:ml-[17rem]">
+        <ChatModal />
+        <Router />
+      </div>
+    </div>
+  );
 }
 
 export default App;
