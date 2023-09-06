@@ -35,6 +35,8 @@ CREATE TABLE
     IF NOT EXISTS `tutorial` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `title` VARCHAR(64) NULL,
+        `category` VARCHAR(64) NULL,
+        `difficulty` VARCHAR(64) NULL,
         `content` VARCHAR(255) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
@@ -44,6 +46,7 @@ CREATE TABLE
         `id` INT NOT NULL AUTO_INCREMENT,
         `name` VARCHAR(64) NULL,
         `price` DECIMAL NULL,
+        `category` VARCHAR(64),
         `description` VARCHAR(255) NULL,
         `picture` VARCHAR(255) NULL,
         PRIMARY KEY (`id`)
