@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
-import SidebarMobile from "./Components/SidebarMobile";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import SidebarMobile from "./components/SidebarMobile";
 import Router from "./routes/Router";
-import ChatModal from "./Components/ChatModal";
+import ChatModal from "./components/ChatModal";
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
