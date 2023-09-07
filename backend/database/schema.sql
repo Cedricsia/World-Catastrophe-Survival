@@ -39,6 +39,7 @@ CREATE TABLE
         `category` VARCHAR(64) NOT NULL,
         `difficulty` VARCHAR(64) NOT NULL,
         `content` TEXT NOT NULL,
+        `image` VARCHAR(100)NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -166,68 +167,82 @@ INSERT INTO
         `title`,
         `category`,
         `difficulty`,
-        `content`
+        `content`,
+        `image`
     )
 VALUES (
         'Build your own nuclear shelter',
         'Engineering',
         'Medium',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
         'First aid best practice',
         'Medical',
         'Medium',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
         'Scouting techniques',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     ), (
         'Zombies: close combat skills',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
         'How to deal with humanoid threat',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample', 
+        'Combat.png'
     ), (
         'Rat cooking course',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
+
     ), (
         'Limb amputation workshop',
         'Medical',
         'Hard',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Build a barricade to protect yourself against zombie hordes',
+        'Build a barricade',
         'Medium',
         'Engineering',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
-        'Flying ennemies : how to protect your head',
+        'Flying ennemies',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
-        'Food poisoning : how to cure it with wild roots',
+        'Food poisoning',
         'Medical',
         'Easy',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Firearms maintenance : full course',
+        'Firearms maintenance',
         'Engineering',
         'Easy',
-        'Sample'
+        'Sample',
+        "Engineering.png"
     ), (
-        "Safe exploration techniques : you'll never wander in a bear den anymore",
+        "Safe exploration techniques",
         'Exploration',
         'Hard',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     );
 
 INSERT INTO
