@@ -42,7 +42,11 @@ function Sidebar({ setSidebar, sidebar }) {
       {user && (
         <div className="w-full">
           <div className="flex flex-col items-center gap-2">
-            <Link to="/profile" className="flex flex-col items-center">
+            <Link
+              to="/profile"
+              className="flex flex-col items-center"
+              onClick={closeSidebar}
+            >
               <img src={profile} alt="profile-pic" className="w-44 my-4" />
               <p className="text-base-100 text-2xl font-bold">
                 {user ? user.username : "Name"}
