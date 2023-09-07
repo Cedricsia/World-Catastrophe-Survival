@@ -1,5 +1,5 @@
 // Load the express module to create a web application
-const path = require("node:path");
+/*eslint-disable*/
 const cors = require("cors");
 const express = require("express");
 const path = require("path");
@@ -90,11 +90,6 @@ app.use(
   express.static(path.join(__dirname, "../public/assets/images"))
 );
 
-app.use("/", express.static(path.join(__dirname, "../public")));
-app.use(
-  "/images",
-  express.static(path.join(__dirname, "../public/assets/images"))
-);
 /* ************************************************************************* */
 
 // Production-ready setup: What is it for, and when should I enable it?
