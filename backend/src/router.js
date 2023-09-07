@@ -6,22 +6,62 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-// Import itemControllers module for handling item-related operations
-const itemControllers = require("./controllers/itemControllers");
+const itemRoutes = require("./routes/itemRoutes");
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
-
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
-
-// Route to add a new item
-router.post("/items", itemControllers.add);
+router.use("/items", itemRoutes);
 
 /* ************************************************************************* */
 
-const potoControllers = require("./controllers/potoControllers");
+const basketRoutes = require("./routes/basketRoutes");
 
-router.post("/gepeto", potoControllers.conversation);
+router.use("/baskets", basketRoutes);
+
+/* ************************************************************************* */
+
+const basketItemRoutes = require("./routes/basketItemRoutes");
+
+router.use("/basket_items", basketItemRoutes);
+
+/* ************************************************************************* */
+
+const userRoutes = require("./routes/userRoutes");
+
+router.use("/users", userRoutes);
+
+/* ************************************************************************* */
+
+const tutorialRoutes = require("./routes/tutorialRoutes");
+
+router.use("/tutorials", tutorialRoutes);
+
+/* ************************************************************************* */
+
+const trainingRoutes = require("./routes/trainingRoutes");
+
+router.use("/trainings", trainingRoutes);
+
+/* ************************************************************************* */
+
+const bookedTrainingRoutes = require("./routes/bookedTrainingRoutes");
+
+router.use("/booked_trainings", bookedTrainingRoutes);
+
+/* ************************************************************************* */
+
+const teacherRoutes = require("./routes/teacherRoutes");
+
+router.use("/teachers", teacherRoutes);
+
+/* ************************************************************************* */
+
+const bestiaryRoutes = require("./routes/bestiaryRoutes");
+
+router.use("/beasts", bestiaryRoutes);
+
+/* ************************************************************************* */
+
+const potoRoutes = require("./routes/potoRoutes");
+
+router.use("/gepeto", potoRoutes);
 
 module.exports = router;

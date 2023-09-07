@@ -4,9 +4,25 @@
 
 // Import the manager modules responsible for handling data operations on the tables
 const ItemManager = require("./models/ItemManager");
+const BasketItemManager = require("./models/BasketItemManager");
+const BasketManager = require("./models/BasketManager");
+const BestiaryManager = require("./models/BestiaryManager");
+const BookedTrainingManager = require("./models/BookedTrainingManager");
+const TrainingManager = require("./models/TrainingManager");
+const TeacherManager = require("./models/TeacherManager");
+const TutorialManager = require("./models/TutorialManager");
+const UserManager = require("./models/UserManager");
 
 const managers = [
   ItemManager,
+  BasketItemManager,
+  BasketManager,
+  BestiaryManager,
+  BookedTrainingManager,
+  TrainingManager,
+  TeacherManager,
+  TutorialManager,
+  UserManager,
   // Add other managers here
 ];
 
