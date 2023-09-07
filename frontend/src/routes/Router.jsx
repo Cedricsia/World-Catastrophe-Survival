@@ -10,14 +10,17 @@ import NoMatch from "../pages/NoMatch";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 
-function Router() {
+function Router({ chatModal, setChatModal }) {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/tutorials" element={<Tutorials />} />
       <Route path="/trainings" element={<Trainings />} />
-      <Route path="/eshop" element={<Eshop />} />
+      <Route
+        path="/eshop"
+        element={<Eshop chatModal={chatModal} setChatModal={setChatModal} />}
+      />
       <Route path="/profile" element={<Profile />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
