@@ -18,20 +18,14 @@ function Login() {
     evt.preventDefault();
 
     if (credentials.email.length && credentials.password.length) {
-      expressApi
-        .post("/api/auth/signin", credentials)
-        .then((res) => {
-          if (res.status === 200) {
-            return res;
-          }
-          /* else toastify */
-          return console.info("User logged in");
-        })
-        .then((data) => {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-          return navigate("/");
-        });
+      expressApi.post("/api/auth/signin", credentials).then((res) => {
+        if (res.status === 200) {
+          setUser(res.data);
+          localStorage.setItem("user", JSON.stringify(res.data));
+          navigate("/");
+        }
+        /* else toastify */
+      });
     }
     /* else toastify */
   };

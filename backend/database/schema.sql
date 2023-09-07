@@ -12,11 +12,11 @@ DROP TABLE IF EXISTS `item`;
 
 DROP TABLE IF EXISTS `booked_training`;
 
-DROP TABLE IF EXISTS `user`;
-
 DROP TABLE IF EXISTS `training_time`;
 
 DROP TABLE IF EXISTS `training`;
+
+DROP TABLE IF EXISTS `user`;
 
 DROP TABLE IF EXISTS `teacher`;
 
@@ -56,12 +56,17 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS `user` (
         `id` INT NOT NULL AUTO_INCREMENT,
+        `role` INT DEFAULT 1 NOT NULL,
         `username` VARCHAR(64) NOT NULL,
-        `firstname` VARCHAR(64) NOT NULL,
-        `lastname` VARCHAR(64) NOT NULL,
         `email` VARCHAR(64) NOT NULL,
-        `gender` VARCHAR(64) NOT NULL,
         `password` VARCHAR(64) NOT NULL,
+        `firstname` VARCHAR(64) NULL,
+        `lastname` VARCHAR(64) NULL,
+        `gender` VARCHAR(64) NULL,
+        `adress` VARCHAR(250) NULL,
+        `zipcode` VARCHAR(64) NULL,
+        `city` VARCHAR(64) NULL,
+        `country` VARCHAR(64) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -401,6 +406,32 @@ VALUES (
         'Tools',
         'Sealable liquid container. 700mL capacity.',
         'gourde1.png'
+    );
+
+INSERT INTO
+    `user` (
+        `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        "Cool User",
+        "user@user.fr",
+        "user"
+    );
+
+INSERT INTO
+    `user` (
+        `role`,
+        `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        2,
+        "Admin User",
+        "admin@admin.fr",
+        "admin"
     );
 
 INSERT INTO

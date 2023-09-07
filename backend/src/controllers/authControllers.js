@@ -1,4 +1,7 @@
 const { encodeJWT } = require("../helpers/jwtHelper");
+
+const tables = require("../tables");
+
 // const { createOne } = require("../models/user.model.js");
 
 const signin = async (req, res) => {
@@ -19,20 +22,20 @@ const signin = async (req, res) => {
   }
 };
 
-// const signup = async (req, res, next) => {
-//   const [result] = await createOne(req.body);
+const signup = async (req, res) => {
+  const [result] = await tables.user.createOne(req.body);
 
-//   delete req.body.password;
+  delete req.body.password;
 
-//   if (result.affectedRows) {
-//     res.status(201).json({ id: result.insertId, ...req.body });
-//   } else {
-//     res.sendStatus(500);
-//   }
-// };
+  if (result.affectedRows) {
+    res.status(201).send({ id: result.insertId, ...req.body });
+  } else {
+    res.sendStatus(500);
+  }
+};
 
 const logout = (req, res) => {
   res.clearCookie("auth_token").sendStatus(200);
 };
 
-module.exports = { signin, logout };
+module.exports = { signin, signup, logout };
