@@ -11,7 +11,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex gap-3 flex-col items-center lg:items-start lg:flex-row mt-5 lg:ml-5 lg:justify-around">
+    <div className="flex gap-3 flex-col items-center lg:items-start lg:flex-row mt-24 lg:ml-5 lg:justify-around">
       <div className="w-10/12 lg:w-1/3 flex flex-col items-center">
         <div className="w-full bg-secondary text-primary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
           My Trainings

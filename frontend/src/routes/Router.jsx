@@ -7,7 +7,7 @@ import Trainings from "../pages/Trainings";
 import Eshop from "../pages/Eshop";
 import Profile from "../pages/Profile";
 import NoMatch from "../pages/NoMatch";
-import Login from "../pages/Login";
+import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 
 function Router() {
@@ -19,7 +19,7 @@ function Router() {
       <Route path="/trainings" element={<Trainings />} />
       <Route path="/eshop" element={<Eshop />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
