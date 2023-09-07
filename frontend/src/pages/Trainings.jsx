@@ -1,5 +1,5 @@
 function Trainings() {
-  return <div>Trainings Page</div>;
+  return <div className="mt-24">Trainings Page</div>;
 }
 
 export default Trainings;
