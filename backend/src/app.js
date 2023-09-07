@@ -84,6 +84,11 @@ app.use(express.json());
 const router = require("./router");
 
 app.use("/api", router);
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 
 app.use("/", express.static(path.join(__dirname, "../public")));
 app.use(
