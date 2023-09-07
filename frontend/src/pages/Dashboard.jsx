@@ -1,6 +1,6 @@
 function Dashboard() {
   return (
-    <div>
+    <div className="mt-20 p-2">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquam
       maiores eos iure, sint dolorum corporis cumque! Soluta incidunt sapiente
       aspernatur pariatur, error voluptatum quae, molestias facilis earum labore

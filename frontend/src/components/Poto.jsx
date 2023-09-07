@@ -18,7 +18,7 @@ function Poto() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/gepeto",
+        `${import.meta.env.VITE_BACKEND_URL}/api/gepeto`,
         options
       );
       const data = await response.data;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AuthForm() {
+function Signin() {
   const [credentials, setCredentials] = useState({});
   console.info(credentials);
   const handleChange = (evt) => {
@@ -48,4 +48,4 @@ function AuthForm() {
   );
 }
 
-export default AuthForm;
+export default Signin;

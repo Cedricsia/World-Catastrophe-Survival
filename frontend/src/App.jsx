@@ -14,10 +14,10 @@ function App() {
     <div className="font-noto lg:flex">
       <Navbar setSidebar={setSidebar} sidebar={sidebar} />
       <Sidebar />
-      {sidebar && <SidebarMobile />}
-      <div className="lg:ml-[17rem]">
-        <ChatModal />
+      {sidebar && <SidebarMobile setSidebar={setSidebar} sidebar={sidebar} />}
+      <div className="lg:ml-[17rem] flex justify-center">
         <Router />
+        <ChatModal />
       </div>
     </div>
   );
