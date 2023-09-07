@@ -8,11 +8,11 @@ import Router from "./routes/Router";
 function App() {
   const [sidebar, setSidebar] = useState(false);
   return (
-    <div className="font-noto lg:flex">
+    <div className="font-noto lg:flex  min-h-screen ">
       <Navbar setSidebar={setSidebar} sidebar={sidebar} />
       <Sidebar />
       {sidebar && <SidebarMobile />}
-      <div className="lg:ml-[17rem]">
+      <div className="lg:ml-[17rem] flex">
         <Router />
       </div>
     </div>
