@@ -96,20 +96,6 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE
-    IF NOT EXISTS `booked_training` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `start_time` DATETIME NOT NULL,
-        `end_time` DATETIME NOT NULL,
-        `subject` VARCHAR(64) NOT NULL,
-        `impairment` VARCHAR(64) NULL,
-        `teacher_id` INT NOT NULL,
-        `user_id` INT NOT NULL,
-        PRIMARY KEY (`id`),
-        CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
-CREATE TABLE
     IF NOT EXISTS `training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `title` VARCHAR(64) NOT NULL,
@@ -119,6 +105,21 @@ CREATE TABLE
         `teacher_id` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE
+    IF NOT EXISTS `booked_training` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `start_time` DATETIME NOT NULL,
+        `end_time` DATETIME NOT NULL,
+        `impairment` VARCHAR(64) NULL,
+        `training_id` INT NOT NULL,
+        `teacher_id` INT NOT NULL,
+        `user_id` INT NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_lesson_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE
@@ -495,3 +496,57 @@ VALUES (
         TRUE,
         NULL
     );
+    
+    INSERT INTO
+    `training` (
+        `title`,
+        `description`,
+        `category`,
+        `difficulty`,
+        `teacher_id`
+    )
+VALUES (
+        'Eliminating the threats',
+        'Learn how to annihilate your ennemies.',
+        'Combat',
+        'Hard',
+        2
+    ), (
+        'How to eat everything you find',
+        'In the wilderness, you must be prepared to eat anything, be it raw or still living. Learn how in this interactive workshop.',
+        'Exploration',
+        'Medium',
+        1
+    ), (
+        'Building on the fly',
+        'Learn how to build explosive devices with only bubble-gum and pieces of string.',
+        'Engineering',
+        'Easy',
+        3
+    ), (
+        'Virology explained',
+        'Learn about new viruses and how to defeat them. ',
+        'Medical',
+        'Medium',
+        4
+    ), (
+        'Repairs & upgrades mastery',
+        'Learn how to do repairs on the field and adapt hardware to new functionalities.',
+        'Engineering',
+        'Easy',
+        5
+    ), (
+        'Armed combat: bat mastery',
+        'Learn how to use your best lethal companion to prevent yourself from being harmed.',
+        'Combat',
+        'Hard',
+        6
+    ), (
+        'Old ruins climbing session',
+        'Practice your climbing skills in a challenging environment. Firearms advised.',
+        'Exploration',
+        'Easy',
+        7
+    );
+    
+    INSERT INTO `booked_training` (start_time, end_time, impairment, training_id, teacher_id, user_id) VALUES ('2023-09-11 8:00:00', '2023-09-11 10:00:00', 'visual', 1, 3, 1), ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 4, 2, 1);
