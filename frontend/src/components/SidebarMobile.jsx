@@ -12,7 +12,7 @@ import off from "../assets/off.svg";
 
 function Sidebar() {
   return (
-    <div className="flex flex-col justify-between items-center bg-primary w-[17rem] h-full min-h-screen py-3 fixed absolute">
+    <div className="flex flex-col justify-between items-center bg-primary w-[17rem] h-full min-h-screen py-3 absolute z-10">
       <div className="w-full">
         <div className="flex flex-col items-center gap-2">
           <Link to="/profile" className="flex flex-col items-center">
