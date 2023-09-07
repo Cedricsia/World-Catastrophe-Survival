@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-fallout.webp";
 
-function Navbar() {
+function Navbar({ setSidebar, sidebar }) {
   return (
-    <div className="flex justify-between w-full pr-3 lg:pl-5 p-2 bg-primary">
+    <div className="flex justify-between w-full pr-3 lg:pl-5 p-2 bg-primary lg:hidden">
       <label className="ml-1 btn btn-circle bg-primary swap swap-rotate lg:hidden">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={() => setSidebar(!sidebar)} />
         <svg
           className="swap-off fill-current"
           xmlns="http://www.w3.org/2000/svg"
