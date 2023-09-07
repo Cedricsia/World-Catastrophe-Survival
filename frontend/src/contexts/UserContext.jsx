@@ -1,15 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 const userContext = createContext();
 
-export const useUserContext = () => useContext(userContext);
+function useUserContext() {
+  return useContext(userContext);
+}
 
-export const UserContextProvider = ({ children }) => {
+function UserContextProvider({ children }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  return (
-    <userContext.Provider value={{ user, setUser }}>
-      {children}
-    </userContext.Provider>
-  );
-};
+  const value = useMemo(() => [setUser, user], [user]);
+
+  return <userContext.Provider value={value}>{children}</userContext.Provider>;
+}
+
+export { useUserContext, UserContextProvider };

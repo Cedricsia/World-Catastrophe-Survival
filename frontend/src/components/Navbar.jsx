@@ -5,7 +5,7 @@ function Navbar({ setSidebar, sidebar }) {
   return (
     <div className="fixed top-0 flex justify-between items-center w-full h-20 pr-3 lg:pl-5 p-2 bg-primary lg:hidden">
       <label className="ml-1 btn btn-circle bg-primary lg:hidden">
-        <button onClick={() => setSidebar(!sidebar)}>
+        <button type="button" onClick={() => setSidebar(!sidebar)}>
           {sidebar ? (
             <svg
               className=" fill-current"

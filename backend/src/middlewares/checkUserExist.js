@@ -2,14 +2,13 @@ const tables = require("../tables");
 
 const checkUserExist = async (req, res, next) => {
   try {
-    const [user] = await tables.user.getOneByEmail(req.body.email);
+    const [[user]] = await tables.user.getOneByEmail(req.body.email);
 
-    if (!user.length) throw new Error("This user doesn't exist");
+    if (!user.id) throw new Error("This user doesn't exist");
 
-    req.user = user[0];
-    console.log(req.user);
+    req.user = user;
 
-    return next();
+    next();
   } catch (error) {
     console.warn(error);
     res.status(404).send(error);

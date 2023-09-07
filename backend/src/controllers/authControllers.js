@@ -1,4 +1,4 @@
-const { encodeJWT } = require("../helpers/jwtHelper.js");
+const { encodeJWT } = require("../helpers/jwtHelper");
 // const { createOne } = require("../models/user.model.js");
 
 const signin = async (req, res) => {
@@ -31,8 +31,8 @@ const signin = async (req, res) => {
 //   }
 // };
 
-// const logout = (req, res) => {
-//   res.clearCookie("auth_token").sendStatus(200);
-// };
+const logout = (req, res) => {
+  res.clearCookie("auth_token").sendStatus(200);
+};
 
-module.exports = { signin };
+module.exports = { signin, logout };

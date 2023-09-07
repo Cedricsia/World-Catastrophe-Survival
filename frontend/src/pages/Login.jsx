@@ -6,7 +6,7 @@ import expressApi from "../services/expressApi";
 function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  const { setUser } = useUserContext();
+  const [setUser] = useUserContext();
 
   const navigate = useNavigate();
 
@@ -19,25 +19,21 @@ function Login() {
 
     if (credentials.email.length && credentials.password.length) {
       expressApi
-        .post("/api/auth/login", credentials)
+        .post("/api/auth/signin", credentials)
         .then((res) => {
           if (res.status === 200) {
-            console.log(res);
             return res;
-          } else {
-            // Toastify ?
-            alert("Wrong Credentials");
           }
+          /* else toastify */
+          return console.info("User logged in");
         })
         .then((data) => {
           setUser(data);
           localStorage.setItem("user", JSON.stringify(data));
-          navigate("/");
+          return navigate("/");
         });
-    } else {
-      // toastify
-      alert("Enter valids fields");
     }
+    /* else toastify */
   };
 
   return (
