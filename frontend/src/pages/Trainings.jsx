@@ -1,5 +1,9 @@
 function Trainings() {
-  return <div>Trainings Page</div>;
+  return (
+    <div>
+      <h2>Categories</h2>
+    </div>
+  );
 }
 
 export default Trainings;

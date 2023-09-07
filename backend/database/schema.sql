@@ -345,7 +345,7 @@ VALUES (
         '29.99',
         'Weapons',
         'Wooden bat, contondent weapon effective against a wide array of threats. Can also be used to play baseball.',
-        'arbalete1.png'
+        'lucile1.png'
     ), (
         'Beef meat',
         '19.99',
@@ -433,7 +433,7 @@ INSERT INTO
     )
 VALUES (
         'Bear',
-        'Grills',
+        'Grylls',
         'Exploration',
         TRUE,
         TRUE,
@@ -494,4 +494,56 @@ VALUES (
         TRUE,
         TRUE,
         NULL
+    );
+
+INSERT INTO
+    `training` (
+        `title`,
+        `description`,
+        `category`,
+        `difficulty`,
+        `teacher_id`
+    )
+VALUES (
+        'Eliminating the threats',
+        'Learn how to annihilate your ennemies.',
+        'Combat',
+        'Hard',
+        2
+    ), (
+        'How to eat everything you find',
+        'In the wilderness, you must be prepared to eat anything, be it raw or still living. Learn how in this interactive workshop.',
+        'Exploration',
+        'Medium',
+        1
+    ), (
+        'Building on the fly',
+        'Learn how to build explosive devices with only bubble-gum and pieces of string.',
+        'Engineering',
+        'Easy',
+        3
+    ), (
+        'Virology explained',
+        'Learn about new viruses and how to defeat them. ',
+        'Medical',
+        'Medium',
+        4
+    ), (
+        'Repairs & upgrades mastery',
+        'Learn how to do repairs on the field and adapt hardware to new functionalities.',
+        'Engineering',
+        'Easy',
+        5
+    ), (
+        'Armed combat: bat mastery',
+        'Learn how to use your best lethal companion to prevent yourself from being harmed.',
+        'Combat',
+        'Hard',
+        6
+    ), (
+        'Old ruins climbing session',
+        'Practice your climbing skills in a challenging environment. Firearms advised.',
+        'Exploration',
+        'Easy',
+        7
     );
