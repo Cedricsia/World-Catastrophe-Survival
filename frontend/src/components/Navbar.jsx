@@ -4,7 +4,7 @@ import logo from "../assets/logo-fallout.webp";
 function Navbar({ setSidebar, sidebar }) {
   return (
     <div className="fixed top-0 flex justify-between items-center w-full h-20 pr-3 lg:pl-5 p-2 bg-primary lg:hidden">
-      <label className="ml-1 btn btn-circle bg-primary lg:hidden">
+      <div className="ml-1 btn btn-circle bg-primary lg:hidden">
         <button type="button" onClick={() => setSidebar(!sidebar)}>
           {sidebar ? (
             <svg
@@ -34,7 +34,7 @@ function Navbar({ setSidebar, sidebar }) {
             </svg>
           )}
         </button>
-      </label>
+      </div>
       <Link to="/" onClick={() => setSidebar(false)}>
         <img src={logo} alt="logo-wcs" className="w-44" />
       </Link>

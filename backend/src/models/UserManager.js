@@ -10,6 +10,13 @@ class UserManager extends AbstractManager {
       email,
     ]);
   }
+
+  createOne({ username, email, password }) {
+    return this.database.query(
+      `INSERT INTO ${this.table} (username, email, password) VALUES (?,?,?)`,
+      [username, email, password]
+    );
+  }
 }
 
 module.exports = UserManager;
