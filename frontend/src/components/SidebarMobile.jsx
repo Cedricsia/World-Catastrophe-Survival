@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import expressApi from "../services/expressApi";
 
@@ -34,7 +34,7 @@ function Sidebar({ setSidebar, sidebar }) {
   };
 
   const closeSidebar = () => {
-    setSidebar(!sidebar);
+    setSidebar(false);
   };
 
   return (
@@ -42,12 +42,16 @@ function Sidebar({ setSidebar, sidebar }) {
       {user && (
         <div className="w-full">
           <div className="flex flex-col items-center gap-2">
-            <Link to="/profile" className="flex flex-col items-center">
+            <NavLink
+              to="/profile"
+              onClick={closeSidebar}
+              className="flex flex-col items-center"
+            >
               <img src={profile} alt="profile-pic" className="w-44 my-4" />
               <p className="text-base-100 text-2xl font-bold">
                 {user ? user.username : "Name"}
               </p>
-            </Link>
+            </NavLink>
           </div>
           <ul className="flex flex-col w-full my-5">
             <NavLink to="/dashboard" onClick={closeSidebar}>
