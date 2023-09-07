@@ -2,7 +2,7 @@
 const path = require("node:path");
 const cors = require("cors");
 const express = require("express");
-
+const path = require("path");
 const app = express();
 
 // Configure it
@@ -112,14 +112,16 @@ app.use(
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
-// const reactBuildPath = `${__dirname}/../../frontend/dist`;
-
 // serve react resources
 
 // app.use(express.static(reactBuildPath));
 
 // redirect unhandled requests to the react index file
-
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 /*
 app.get("*", (req, res) => {
   res.sendFile(`${reactBuildPath}/index.html`);
