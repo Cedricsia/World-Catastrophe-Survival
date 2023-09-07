@@ -20,7 +20,6 @@ function App() {
       <div className=" w-full lg:ml-[17rem] flex justify-center">
         <Router chatModal={chatModal} setChatModal={setChatModal} />
         {chatModal && <ChatModal chatModal={chatModal} />}
-
       </div>
     </div>
   );
