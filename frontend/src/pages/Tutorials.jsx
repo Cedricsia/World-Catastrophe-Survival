@@ -59,10 +59,10 @@ function Tutorials() {
         </div>
         {visible && (
           <div className="bg-accent md:bg-base-100">
-            <h1 className="text-2xl text-neutral md:text-center border-t-2 border-neutral md:border-t-0 p-2 ">
+            <h1 className="text-2xl font-semibold text-primary md:text-center border-t-2 border-neutral md:border-t-0 p-2 ">
               Categories:
             </h1>
-            <div className="flex flex-col  gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center p-2">
+            <div className="flex flex-col gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center p-2">
               {categorie.map((cat) => (
                 <div className="ml-3 md:ml-0" key={cat}>
                   <button
@@ -79,7 +79,7 @@ function Tutorials() {
                 </div>
               ))}
             </div>
-            <h1 className="text-2xl text-neutral md:text-center border-t-2 border-neutral md:border-t-0 p-2">
+            <h1 className="text-2xl font-semibold text-primary md:text-center border-t-2 border-neutral md:border-t-0 p-2">
               Difficulty:
             </h1>
             <div className="flex flex-col gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center pl-5 pb-2 md:pb-5 border-b-2 border-neutral">
