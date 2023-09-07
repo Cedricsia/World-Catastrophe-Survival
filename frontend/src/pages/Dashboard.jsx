@@ -19,8 +19,11 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="mt-24 lg:mt-5 flex gap-3 flex-col items-center lg:items-start lg:flex-row my-5 lg:ml-5 lg:justify-around">
-      <div className="w-10/12 lg:w-2/4 flex flex-col items-center">
+    <div className="mt-20 lg:mt-5 flex gap-3 flex-col items-center lg:items-start lg:flex-row my-5 lg:ml-5 lg:justify-around">
+      <div className="w-full h-14 bg-primary flex justify-center items-center lg:hidden">
+        <h1 className="text-3xl font-bold text-secondary">Profile</h1>
+      </div>
+      <div className="w-11/12 lg:w-2/4 flex flex-col items-center">
         <div className="w-full bg-secondary text-primary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
           My Trainings
         </div>
@@ -38,13 +41,22 @@ function Dashboard() {
                       formatTime(training.start_time).time
                     } - ${formatTime(training.end_time).time} :`}
                   </p>
-                  <p>{training.description}</p>
+                  <div className="flex items-center my-1">
+                    <img
+                      src={`${
+                        import.meta.env.VITE_BACKEND_URL
+                      }/images/profiles/${training.profilepicture}`}
+                      alt="teacher"
+                      className="w-16 mr-3"
+                    />
+                    <p>{training.description}</p>
+                  </div>
                 </div>
               </div>
             ))}
         </div>
       </div>
-      <div className="w-10/12 lg:w-1/3 flex flex-col items-center">
+      <div className="w-11/12 lg:w-1/3 flex flex-col items-center">
         <div className="w-full bg-secondary text-primary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
           Incoming Events
         </div>

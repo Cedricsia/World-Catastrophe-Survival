@@ -112,16 +112,23 @@ CREATE TABLE
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE
-    IF NOT EXISTS `booked_training` (
+CREATE TABLE IF NOT EXISTS `day`(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `booked_training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `start_time` DATETIME NOT NULL,
         `end_time` DATETIME NOT NULL,
         `impairment` VARCHAR(64) NULL,
+        `day_id` INT NOT NULL,
         `training_id` INT NOT NULL,
         `teacher_id` INT NOT NULL,
         `user_id` INT NOT NULL,
         PRIMARY KEY (`id`),
+        CONSTRAINT `fk_lesson_day` FOREIGN KEY (`day_id`) REFERENCES `day` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -142,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `event` (
     `title` VARCHAR(64) NOT NULL,
     PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
 
 INSERT INTO
     `bestiary` (
@@ -471,13 +479,13 @@ INSERT INTO
     )
 VALUES (
         'Bear',
-        'Grills',
+        'Grylls',
         'Exploration',
         TRUE,
         TRUE,
         FALSE,
         TRUE,
-        NULL
+        'be1.png'
     ), (
         'Chuck',
         'Norris',
@@ -486,7 +494,7 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'ch1.png'
     ), (
         'Angus',
         'McGyver',
@@ -495,7 +503,7 @@ VALUES (
         TRUE,
         TRUE,
         FALSE,
-        NULL
+        'mc1.png'
     ), (
         'Didier',
         'Raoult',
@@ -504,7 +512,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'ra1.png'
     ), (
         'Doc',
         'Brown',
@@ -513,7 +521,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'br1.png'
     ), (
         'Negan',
         'Smith',
@@ -522,7 +530,7 @@ VALUES (
         FALSE,
         FALSE,
         FALSE,
-        NULL
+        'ne1.png'
     ), (
         'Lara',
         'Croft',
@@ -531,7 +539,43 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'la1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Exploration',
+        TRUE,
+        TRUE,
+        TRUE,
+        FALSE,
+        'jo1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Combat',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        'jo2.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Engineering',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        '2Q1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Medical',
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        'jo3.png'
     );
 
 INSERT INTO
@@ -586,6 +630,8 @@ VALUES (
         7
     );
     
-    INSERT INTO `booked_training` (start_time, end_time, impairment, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 5, 4, 1);
+    INSERT INTO `day` (name) VALUES ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday');
+    
+    INSERT INTO `booked_training` (start_time, end_time, impairment, day_id, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 2, 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 3, 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 4, 5, 4, 1);
 
-    INSERT INTO `event` (title) VALUES ("Zombie Invasion"), ("Meteor Shower"), ("Volcanic Eruption"), ("Tsunami"), ("Nuclear Blast");
+    INSERT INTO `event` (title) VALUES ('Zombie Invasion'), ('Meteor Shower'), ('Volcanic Eruption'), ('Tsunami'), ('Nuclear Blast');
