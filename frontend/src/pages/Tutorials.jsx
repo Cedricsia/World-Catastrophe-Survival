@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import TutoCard from "../components/TutoCard";
 import arrowUp from "../assets/arrow-up.svg";
 import arrowDown from "../assets/arrow-down.svg";
@@ -10,88 +11,13 @@ function Tutorials() {
   const difficulty = ["Easy", "Medium", "Hard"];
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
-  const tutorials = [
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "hard",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Combat",
-      difficulty: "Easy",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-    {
-      title: "Build your own nuclear shelter",
-      category: "Engineering",
-      difficulty: "Medium",
-      content: "",
-      image:
-        "https://codersera.com/blog/wp-content/uploads/2021/11/Engineering-672x372.jpeg",
-    },
-  ];
+  const [tutorials, setTutorial] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/tutorials`)
+      .then((res) => setTutorial(res.data));
+  }, []);
+
   const filterTutorials = () => {
     let filteredTutorials = [...tutorials];
 
@@ -138,7 +64,7 @@ function Tutorials() {
             </h1>
             <div className="flex flex-col  gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center p-2">
               {categorie.map((cat) => (
-                <div className="ml-3 md:ml-0">
+                <div className="ml-3 md:ml-0" key={cat}>
                   <button
                     type="button"
                     className={`btn btn-primary w-36 h-10 md:flex text-secondary md:text-xl ${
@@ -181,13 +107,15 @@ function Tutorials() {
           </div>
         )}
       </div>
-      <div className="md:flex md:flex-wrap md:justify-center">
-        {filterTutorials().map((tuto) => (
-          <div className="" key={tuto}>
-            <TutoCard tuto={tuto} />
-          </div>
-        ))}
-      </div>
+      {tutorials && (
+        <div className="md:flex md:flex-wrap md:w-4/5 justify-center md:mx-auto md:mt-20">
+          {filterTutorials().map((tuto) => (
+            <div className="" key={tuto.id}>
+              <TutoCard tuto={tuto} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

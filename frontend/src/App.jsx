@@ -15,7 +15,8 @@ function App() {
       <Navbar setSidebar={setSidebar} sidebar={sidebar} />
       <Sidebar />
       {sidebar && <SidebarMobile />}
-      <div className="lg:ml-[17rem] flex">
+      <div className="lg:ml-[17rem] flex w-full">
+        <ChatModal />
         <Router />
         <ChatModal />
       </div>
