@@ -1,5 +1,5 @@
 function Tutorials() {
-  return <div>Tutorials Page</div>;
+  return <div className="mt-24">Tutorials Page</div>;
 }
 
 export default Tutorials;

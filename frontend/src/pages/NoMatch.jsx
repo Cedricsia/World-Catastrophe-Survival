@@ -1,5 +1,5 @@
 function NoMatch() {
-  return <div>NoMatch</div>;
+  return <div className="mt-24">NoMatch</div>;
 }
 
 export default NoMatch;

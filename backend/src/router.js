@@ -64,4 +64,10 @@ const potoRoutes = require("./routes/potoRoutes");
 
 router.use("/gepeto", potoRoutes);
 
+/* ************************************************************************* */
+
+const authRoutes = require("./routes/authRoutes");
+
+router.use("/auth", authRoutes);
+
 module.exports = router;

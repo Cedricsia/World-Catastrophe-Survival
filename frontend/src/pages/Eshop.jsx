@@ -1,5 +1,5 @@
 function Eshop() {
-  return <div>Eshop Page</div>;
+  return <div className="mt-24">Eshop Page</div>;
 }
 
 export default Eshop;
