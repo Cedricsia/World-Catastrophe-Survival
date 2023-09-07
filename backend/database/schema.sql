@@ -228,7 +228,7 @@ INSERT INTO
     )
 VALUES (
         'Swiss army knife',
-        '29.99',
+        29.99,
         'Tools',
         'A all-around tasks knife with 99 distinct functions.',
         'knife1.png'
