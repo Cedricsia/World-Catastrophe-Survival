@@ -35,15 +35,15 @@ class AbstractManager {
   }
 
   getAll() {
-    database.query(`SELECT * FROM ${this.database}`);
+    return database.query(`SELECT * FROM ${this.table}`);
   }
 
   getOne(id) {
-    database.query(`SELECT * FROM ${this.database} WHERE id = ?`, [id]);
+    return database.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id]);
   }
 
   deleteOne(id) {
-    database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
+    return database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
   }
 }
 
