@@ -37,15 +37,15 @@ function Tutorials() {
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="bg-primary flex justify-between px-2 md:hidden">
+    <div className="flex flex-col w-full mt-20 md:mt-3 md:mb-5">
+      <div className="bg-primary flex justify-between md:hidden">
         <h1 className="bg-primary text-secondary text-3xl p-2">Tutorials</h1>
-        <button type="button">
+        <button type="button" className="mr-2">
           <img src={info} alt="" className="h-10" />
         </button>
       </div>
-      <div className="md:mt-5  ">
-        <div className="flex bg-accent p-2 md:hidden">
+      <div>
+        <div className="flex gap-2 bg-accent p-2 md:hidden">
           <h1 className=" text-3xl text-neutral">Filters</h1>
           {visible ? (
             <button type="button" onClick={() => setVisible(false)}>
@@ -82,7 +82,7 @@ function Tutorials() {
             <h1 className="text-2xl text-neutral md:text-center border-t-2 border-neutral md:border-t-0 p-2">
               Difficulty:
             </h1>
-            <div className="flex flex-col  gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center ml-3 p-2">
+            <div className="flex flex-col gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center pl-5 pb-2 md:pb-5 border-b-2 border-neutral">
               {difficulty.map((elem) => (
                 <div key={elem}>
                   <button
@@ -108,7 +108,7 @@ function Tutorials() {
         )}
       </div>
       {tutorials && (
-        <div className="md:flex md:flex-wrap md:w-4/5 justify-center md:mx-auto md:mt-20">
+        <div className="flex flex-col mt-3 md:grid md:grid-cols-2 gap-1 mx-10">
           {filterTutorials().map((tuto) => (
             <div className="" key={tuto.id}>
               <TutoCard tuto={tuto} />
@@ -121,3 +121,4 @@ function Tutorials() {
 }
 
 export default Tutorials;
+// md:flex md:flex-wrap md:w-4/5 justify-center md:mx-auto md:mt-20
