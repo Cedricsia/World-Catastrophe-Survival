@@ -439,7 +439,7 @@ VALUES (
         TRUE,
         FALSE,
         TRUE,
-        NULL
+        'be1.png'
     ), (
         'Chuck',
         'Norris',
@@ -448,7 +448,7 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'ch1.png'
     ), (
         'Angus',
         'McGyver',
@@ -457,7 +457,7 @@ VALUES (
         TRUE,
         TRUE,
         FALSE,
-        NULL
+        'mc1.png'
     ), (
         'Didier',
         'Raoult',
@@ -466,7 +466,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'ra1.png'
     ), (
         'Doc',
         'Brown',
@@ -475,7 +475,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'br1.png'
     ), (
         'Negan',
         'Smith',
@@ -484,7 +484,7 @@ VALUES (
         FALSE,
         FALSE,
         FALSE,
-        NULL
+        'ne1.png'
     ), (
         'Lara',
         'Croft',
@@ -493,7 +493,43 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'la1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Exploration',
+        TRUE,
+        TRUE,
+        TRUE,
+        FALSE,
+        'jo1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Combat',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        'jo2.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Engineering',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        '2Q1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Medical',
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        'jo3.png'
     );
 
 INSERT INTO
