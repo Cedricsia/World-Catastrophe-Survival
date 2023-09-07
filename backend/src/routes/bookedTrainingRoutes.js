@@ -8,4 +8,6 @@ router.get("/", bookedTrainingControllers.browse);
 
 router.get("/:id", bookedTrainingControllers.read);
 
+router.get("/user/:id", bookedTrainingControllers.browseByUser);
+
 module.exports = router;

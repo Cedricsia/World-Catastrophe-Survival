@@ -10,6 +10,17 @@ const browse = async (req, res, next) => {
   }
 };
 
+const browseByUser = async (req, res, next) => {
+  try {
+    const [bookedTrainings] = await tables.booked_training.getAllByUser(
+      req.params.id
+    );
+    res.json(bookedTrainings);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const read = async (req, res, next) => {
   try {
     const [bookedTraining] = await tables.booked_training.getOne(req.params.id);
@@ -24,4 +35,4 @@ const read = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read };
+module.exports = { browse, read, browseByUser };
