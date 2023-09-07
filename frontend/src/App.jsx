@@ -11,7 +11,7 @@ import ChatModal from "./components/ChatModal";
 function App() {
   const [sidebar, setSidebar] = useState(false);
   return (
-    <div className="font-noto lg:flex min-h-screen">
+    <div className="font-noto lg:flex min-h-screen   ">
       <Navbar setSidebar={setSidebar} sidebar={sidebar} />
       <Sidebar />
       {sidebar && <SidebarMobile setSidebar={setSidebar} sidebar={sidebar} />}
