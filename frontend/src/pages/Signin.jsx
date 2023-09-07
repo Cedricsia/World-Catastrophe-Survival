@@ -18,20 +18,14 @@ function Login() {
     evt.preventDefault();
 
     if (credentials.email.length && credentials.password.length) {
-      expressApi
-        .post("/api/auth/signin", credentials)
-        .then((res) => {
-          if (res.status === 200) {
-            return res;
-          }
-          /* else toastify */
-          return console.info("User logged in");
-        })
-        .then((data) => {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-          return navigate("/");
-        });
+      expressApi.post("/api/auth/signin", credentials).then((res) => {
+        if (res.status === 200) {
+          setUser(res.data);
+          localStorage.setItem("user", JSON.stringify(res.data));
+          navigate("/dashboard");
+        }
+        /* else toastify */
+      });
     }
     /* else toastify */
   };
@@ -40,7 +34,7 @@ function Login() {
     <div className="w-96 mt-24">
       <div className="flex justify-around items-center h-16">
         <div className="bg-primary w-1/2 rounded-tl-xl flex justify-center items-center h-16 text-secondary text-3xl font-bold">
-          <button type="button">Log in</button>
+          <button type="button">Log in </button>
         </div>
         <div className="bg-neutral w-1/2 rounded-tr-xl text-center flex justify-center items-center h-16 text-accent text-3xl font-bold">
           <NavLink to="/signup">Sign up</NavLink>

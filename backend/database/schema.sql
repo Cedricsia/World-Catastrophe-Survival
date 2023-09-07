@@ -12,11 +12,11 @@ DROP TABLE IF EXISTS `item`;
 
 DROP TABLE IF EXISTS `booked_training`;
 
-DROP TABLE IF EXISTS `user`;
-
 DROP TABLE IF EXISTS `training_time`;
 
 DROP TABLE IF EXISTS `training`;
+
+DROP TABLE IF EXISTS `user`;
 
 DROP TABLE IF EXISTS `teacher`;
 
@@ -39,6 +39,7 @@ CREATE TABLE
         `category` VARCHAR(64) NOT NULL,
         `difficulty` VARCHAR(64) NOT NULL,
         `content` TEXT NOT NULL,
+        `image` VARCHAR(100)NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -56,12 +57,17 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS `user` (
         `id` INT NOT NULL AUTO_INCREMENT,
+        `role` INT DEFAULT 1 NOT NULL,
         `username` VARCHAR(64) NOT NULL,
-        `firstname` VARCHAR(64) NOT NULL,
-        `lastname` VARCHAR(64) NOT NULL,
         `email` VARCHAR(64) NOT NULL,
-        `gender` VARCHAR(64) NOT NULL,
         `password` VARCHAR(64) NOT NULL,
+        `firstname` VARCHAR(64) NULL,
+        `lastname` VARCHAR(64) NULL,
+        `gender` VARCHAR(64) NULL,
+        `adress` VARCHAR(250) NULL,
+        `zipcode` VARCHAR(64) NULL,
+        `city` VARCHAR(64) NULL,
+        `country` VARCHAR(64) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -107,16 +113,23 @@ CREATE TABLE
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE
-    IF NOT EXISTS `booked_training` (
+CREATE TABLE IF NOT EXISTS `day`(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `booked_training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `start_time` DATETIME NOT NULL,
         `end_time` DATETIME NOT NULL,
         `impairment` VARCHAR(64) NULL,
+        `day_id` INT NOT NULL,
         `training_id` INT NOT NULL,
         `teacher_id` INT NOT NULL,
         `user_id` INT NOT NULL,
         PRIMARY KEY (`id`),
+        CONSTRAINT `fk_lesson_day` FOREIGN KEY (`day_id`) REFERENCES `day` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -131,6 +144,13 @@ CREATE TABLE
         PRIMARY KEY (`id`, `training_id`),
         CONSTRAINT `fk_training_time_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `event` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(64) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
 
 INSERT INTO
     `bestiary` (
@@ -155,68 +175,82 @@ INSERT INTO
         `title`,
         `category`,
         `difficulty`,
-        `content`
+        `content`,
+        `image`
     )
 VALUES (
         'Build your own nuclear shelter',
         'Engineering',
         'Medium',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
         'First aid best practice',
         'Medical',
         'Medium',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
         'Scouting techniques',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     ), (
         'Zombies: close combat skills',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
         'How to deal with humanoid threat',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample', 
+        'Combat.png'
     ), (
         'Rat cooking course',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
+
     ), (
         'Limb amputation workshop',
         'Medical',
         'Hard',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Build a barricade to protect yourself against zombie hordes',
+        'Build a barricade',
         'Medium',
         'Engineering',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
-        'Flying ennemies : how to protect your head',
+        'Flying ennemies',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
-        'Food poisoning : how to cure it with wild roots',
+        'Food poisoning',
         'Medical',
         'Easy',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Firearms maintenance : full course',
+        'Firearms maintenance',
         'Engineering',
         'Easy',
-        'Sample'
+        'Sample',
+        "Engineering.png"
     ), (
-        "Safe exploration techniques : you'll never wander in a bear den anymore",
+        "Safe exploration techniques",
         'Exploration',
         'Hard',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     );
 
 INSERT INTO
@@ -406,6 +440,32 @@ VALUES (
 INSERT INTO
     `user` (
         `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        "Cool User",
+        "user@user.fr",
+        "user"
+    );
+
+INSERT INTO
+    `user` (
+        `role`,
+        `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        2,
+        "Admin User",
+        "admin@admin.fr",
+        "admin"
+    );
+
+INSERT INTO
+    `user` (
+        `username`,
         `firstname`,
         `lastname`,
         `email`,
@@ -434,13 +494,13 @@ INSERT INTO
     )
 VALUES (
         'Bear',
-        'Grills',
+        'Grylls',
         'Exploration',
         TRUE,
         TRUE,
         FALSE,
         TRUE,
-        NULL
+        'be1.png'
     ), (
         'Chuck',
         'Norris',
@@ -449,7 +509,7 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'ch1.png'
     ), (
         'Angus',
         'McGyver',
@@ -458,7 +518,7 @@ VALUES (
         TRUE,
         TRUE,
         FALSE,
-        NULL
+        'mc1.png'
     ), (
         'Didier',
         'Raoult',
@@ -467,7 +527,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'ra1.png'
     ), (
         'Doc',
         'Brown',
@@ -476,7 +536,7 @@ VALUES (
         TRUE,
         TRUE,
         TRUE,
-        NULL
+        'br1.png'
     ), (
         'Negan',
         'Smith',
@@ -485,7 +545,7 @@ VALUES (
         FALSE,
         FALSE,
         FALSE,
-        NULL
+        'ne1.png'
     ), (
         'Lara',
         'Croft',
@@ -494,7 +554,43 @@ VALUES (
         FALSE,
         TRUE,
         TRUE,
-        NULL
+        'la1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Exploration',
+        TRUE,
+        TRUE,
+        TRUE,
+        FALSE,
+        'jo1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Combat',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        'jo2.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Engineering',
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        '2Q1.png'
+    ), (
+        'Johnny',
+        'Sins',
+        'Medical',
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        'jo3.png'
     );
 
 INSERT INTO
@@ -548,28 +644,9 @@ VALUES (
         'Easy',
         7
     );
+    
+    INSERT INTO `day` (name) VALUES ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday');
+    
+    INSERT INTO `booked_training` (start_time, end_time, impairment, day_id, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 2, 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 3, 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 4, 5, 4, 1);
 
-INSERT INTO
-    `booked_training` (
-        start_time,
-        end_time,
-        impairment,
-        training_id,
-        teacher_id,
-        user_id
-    )
-VALUES (
-        '2023-09-11 8:00:00',
-        '2023-09-11 10:00:00',
-        'visual',
-        1,
-        3,
-        1
-    ), (
-        '2023-09-11 10:00:00',
-        '2023-09-11 12:00:00',
-        'visual',
-        4,
-        2,
-        1
-    );
+    INSERT INTO `event` (title) VALUES ('Zombie Invasion'), ('Meteor Shower'), ('Volcanic Eruption'), ('Tsunami'), ('Nuclear Blast');

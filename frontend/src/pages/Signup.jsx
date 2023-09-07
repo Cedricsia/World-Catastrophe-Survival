@@ -1,11 +1,43 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import axios from "axios";
+
+import { useUserContext } from "../contexts/UserContext";
 
 function Signin() {
-  const [credentials, setCredentials] = useState({});
-  console.info(credentials);
+  const [credentials, setCredentials] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const [setUser] = useUserContext();
+
+  const navigate = useNavigate();
+
   const handleChange = (evt) => {
-    setCredentials(evt.target.value);
+    setCredentials({ ...credentials, [evt.target.id]: evt.target.value });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    if (
+      credentials.username.length &&
+      credentials.email.length &&
+      credentials.password.length
+    ) {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`,
+          credentials
+        )
+        .then((res) => {
+          setUser(res.data);
+          localStorage.setItem("user", JSON.stringify(res.data));
+          navigate("/dashboard");
+        });
+    }
   };
 
   return (
@@ -15,10 +47,28 @@ function Signin() {
           <NavLink to="/signin">Log in</NavLink>
         </div>
         <div className="bg-primary w-1/2 rounded-tr-xl text-center flex justify-center items-center h-16 text-secondary text-3xl font-bold">
-          <button type="button">Sign in</button>
+          <button type="button">Sign up</button>
         </div>
       </div>
-      <form className="border-l-[3px] border-b-[3px] border-r-[3px] border-accent rounded-b-xl p-4 flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="border-l-[3px] border-b-[3px] border-r-[3px] border-accent rounded-b-xl p-4 flex flex-col gap-4"
+      >
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="username"
+            className="text-2xl text-primary font-bold "
+          >
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            onChange={handleChange}
+            className="bg-base-100 border-[3px] border-primary w-80 h-10 rounded-xl p-2 text-2xl text-primary"
+          />
+        </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="email" className="text-2xl text-primary font-bold ">
             Email
@@ -43,7 +93,29 @@ function Signin() {
             className="bg-base-100 border-[3px] border-primary w-80 h-10 rounded-xl p-2 text-2xl text-primary"
           />
         </div>
-        <button type="submit">Connexion</button>
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="password-verification"
+            className="text-2xl text-primary font-bold"
+          >
+            Password Verification
+          </label>
+          <input
+            type="password"
+            id="password-verification"
+            name="password-verification"
+            onChange={handleChange}
+            className="bg-base-100 border-[3px] border-primary w-80 h-10 rounded-xl p-2 text-2xl text-primary"
+          />
+        </div>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-primary text-secondary text-2xl font-bold w-40 p-1 rounded-xl"
+          >
+            Register
+          </button>
+        </div>
       </form>
     </div>
   );
