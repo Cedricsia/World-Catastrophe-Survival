@@ -137,6 +137,12 @@ CREATE TABLE
         CONSTRAINT `fk_training_time_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `event` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(64) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
 INSERT INTO
     `bestiary` (
         `name`,
@@ -579,28 +585,7 @@ VALUES (
         'Easy',
         7
     );
+    
+    INSERT INTO `booked_training` (start_time, end_time, impairment, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 5, 4, 1);
 
-INSERT INTO
-    `booked_training` (
-        start_time,
-        end_time,
-        impairment,
-        training_id,
-        teacher_id,
-        user_id
-    )
-VALUES (
-        '2023-09-11 8:00:00',
-        '2023-09-11 10:00:00',
-        'visual',
-        1,
-        3,
-        1
-    ), (
-        '2023-09-11 10:00:00',
-        '2023-09-11 12:00:00',
-        'visual',
-        4,
-        2,
-        1
-    );
+    INSERT INTO `event` (title) VALUES ("Zombie Invasion"), ("Meteor Shower"), ("Volcanic Eruption"), ("Tsunami"), ("Nuclear Blast");

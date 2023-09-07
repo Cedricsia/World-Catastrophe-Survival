@@ -12,6 +12,7 @@ const TrainingManager = require("./models/TrainingManager");
 const TeacherManager = require("./models/TeacherManager");
 const TutorialManager = require("./models/TutorialManager");
 const UserManager = require("./models/UserManager");
+const EventManager = require("./models/EventManager");
 
 const managers = [
   ItemManager,
@@ -23,6 +24,7 @@ const managers = [
   TeacherManager,
   TutorialManager,
   UserManager,
+  EventManager,
   // Add other managers here
 ];
 
