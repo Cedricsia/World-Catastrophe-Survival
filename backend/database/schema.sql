@@ -39,6 +39,7 @@ CREATE TABLE
         `category` VARCHAR(64) NOT NULL,
         `difficulty` VARCHAR(64) NOT NULL,
         `content` TEXT NOT NULL,
+        `image` VARCHAR(100)NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -137,6 +138,12 @@ CREATE TABLE
         CONSTRAINT `fk_training_time_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `event` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(64) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
 INSERT INTO
     `bestiary` (
         `name`,
@@ -160,68 +167,82 @@ INSERT INTO
         `title`,
         `category`,
         `difficulty`,
-        `content`
+        `content`,
+        `image`
     )
 VALUES (
         'Build your own nuclear shelter',
         'Engineering',
         'Medium',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
         'First aid best practice',
         'Medical',
         'Medium',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
         'Scouting techniques',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     ), (
         'Zombies: close combat skills',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
         'How to deal with humanoid threat',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample', 
+        'Combat.png'
     ), (
         'Rat cooking course',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
+
     ), (
         'Limb amputation workshop',
         'Medical',
         'Hard',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Build a barricade to protect yourself against zombie hordes',
+        'Build a barricade',
         'Medium',
         'Engineering',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
-        'Flying ennemies : how to protect your head',
+        'Flying ennemies',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
-        'Food poisoning : how to cure it with wild roots',
+        'Food poisoning',
         'Medical',
         'Easy',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
-        'Firearms maintenance : full course',
+        'Firearms maintenance',
         'Engineering',
         'Easy',
-        'Sample'
+        'Sample',
+        "Engineering.png"
     ), (
-        "Safe exploration techniques : you'll never wander in a bear den anymore",
+        "Safe exploration techniques",
         'Exploration',
         'Hard',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     );
 
 INSERT INTO
@@ -579,28 +600,7 @@ VALUES (
         'Easy',
         7
     );
+    
+    INSERT INTO `booked_training` (start_time, end_time, impairment, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 5, 4, 1);
 
-INSERT INTO
-    `booked_training` (
-        start_time,
-        end_time,
-        impairment,
-        training_id,
-        teacher_id,
-        user_id
-    )
-VALUES (
-        '2023-09-11 8:00:00',
-        '2023-09-11 10:00:00',
-        'visual',
-        1,
-        3,
-        1
-    ), (
-        '2023-09-11 10:00:00',
-        '2023-09-11 12:00:00',
-        'visual',
-        4,
-        2,
-        1
-    );
+    INSERT INTO `event` (title) VALUES ("Zombie Invasion"), ("Meteor Shower"), ("Volcanic Eruption"), ("Tsunami"), ("Nuclear Blast");
