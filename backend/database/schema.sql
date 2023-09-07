@@ -46,7 +46,7 @@ CREATE TABLE
     IF NOT EXISTS `item` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `name` VARCHAR(64) NOT NULL,
-        `price` DECIMAL NOT NULL,
+        `price` DECIMAL(10, 2) NOT NULL,
         `category` VARCHAR(64) NOT NULL,
         `description` VARCHAR(255) NOT NULL,
         `picture` VARCHAR(255) NULL,
@@ -229,175 +229,175 @@ INSERT INTO
     )
 VALUES (
         'Swiss army knife',
-        '29.99',
+        29.99,
         'Tools',
         'A all-around tasks knife with 99 distinct functions.',
         'knife1.png'
     ), (
         'Healing balm',
-        '9.99',
+        9.99,
         'Consumables',
         'A balm made with aloe vera, great for burns healing.',
         'paumade1.png'
     ), (
         'Connected watch',
-        '199.99',
+        199.99,
         'Tools',
         'A watch that display time and date, GPS localisation, text messages and step counter.',
         'montre1.png'
     ), (
         'Climbing rope',
-        '19.99',
+        19.99,
         'Tools',
         'A sturdy rope, ideal to climb hasardous terrains.',
         'corde1.png'
     ), (
         'Carabiner',
-        '8.99',
+        8.99,
         'Tools',
         'A metal carabiner. Used with a climbing rope, or a set of keys',
         'mousqueton1.png'
     ), (
         'Exploration backpack',
-        '82.99',
+        82.99,
         'Tools',
         'A convenient and handy backpack.',
         'bag1.png'
     ), (
         'Military vest',
-        '99.99',
+        99.99,
         'Tools',
         'Ideal to hold magazines and grenades',
         'treillis1.png'
     ), (
         'Tent',
-        '129.99',
+        129.99,
         'Tools',
         'A tent, can house up to 6 people.',
         'tente1.png'
     ), (
         'Military helmet',
-        '159.99',
+        159.99,
         'Tools',
         'A military-grade helmet, can resist small caliber bullets.',
         'casque1.png'
     ), (
         'Assault rifle',
-        '599.99',
+        599.99,
         'Weapons',
         'A 5.56mm assault rifle. Fires 300 rounds per minute.',
         'AR1.png'
     ), (
         'Karambit',
-        '97.99',
+        97.99,
         'Weapons',
         'A karambit, fits well in the hand for better handling.',
         'PA1.png'
     ), (
         'Sniper rifle',
-        '698.99',
+        698.99,
         'Weapons',
         'A sniper rifle that can attain targets up to 1200 meters. Fires 7.62mm ammunition.',
         'sniper1.png'
     ), (
         'Tactical knife',
-        '109.99',
+        109.99,
         'Weapons',
         'A military knife. Hunters love it!',
         'tacticknife1.png'
     ), (
         'Flamethrower',
-        '399.99',
+        399.99,
         'Weapons',
         'A german-made flamethrower. Handle with extreme caution. Risks of severe burns.',
         'LF1.png'
     ), (
         'Crossbow',
-        '199.99',
+        199.99,
         'Weapons',
         'A precise crossbow. Fires darts.',
         'arbalete1.png'
     ), (
         'Composite bow',
-        '179.99',
+        179.99,
         'Weapons',
         'A high-performance bow. Fires arrows.',
         'bow1.png'
     ), (
         '7.62mm bullets',
-        '59.99',
+        59.99,
         'Ammunitions',
         'Ammunation for sniper rifles. 40 units pack.',
         'BulletAmmunitionSnipe1.png'
     ), (
         '9mm bullets',
-        '49.99',
+        49.99,
         'Ammunitions',
         'Ammunition for handguns. 100 units pack.',
         'bullet_gun1.png'
     ), (
         'Arrows quiver',
-        '39.99',
+        39.99,
         'Ammunitions',
         'Contains steel-pointed arrows. 50 units pack.',
         'arbalete1.png'
     ), (
         'Baseball bat',
-        '29.99',
+        29.99,
         'Weapons',
         'Wooden bat, contondent weapon effective against a wide array of threats. Can also be used to play baseball.',
         'arbalete1.png'
     ), (
         'Beef meat',
-        '19.99',
+        19.99,
         'Consumables',
         '1kg of fresh, healthy beef steak.',
         'meat1.png'
     ), (
         'Field medical bag',
-        '109.99',
+        109.99,
         'Tools',
         'A complete set of tools for practicing your medical skills in the wild.',
         'medikit1.png'
     ), (
         'Medikit',
-        '39.99',
+        39.99,
         'Tools',
         'A portable set of medical tools.',
         'smMedikit1.png'
     ), (
         'First aid kit',
-        '19.99',
+        19.99,
         'Tools',
         'A first aid kit with basic medical materials.',
         'fak1.png'
     ), (
         'Luxury gas mask',
-        '299.99',
+        299.99,
         'Tools',
         'An almost comfy gas mask, with cow leather and silk. Spare filters not included.',
         'MAG1.png'
     ), (
         'Military gas mask',
-        '99.99',
+        99.99,
         'Tools',
         'Filters 99% of harmful gases and bacteria.',
         'MAG3.png'
     ), (
         'Epinephrine',
-        '19.99',
+        19.99,
         'Consumables',
         'Auto-injectable rapid-action adrenaline rush. Makes you stronger. Also treats anaphylaxis. Consume with moderation.',
         'adre1.png'
     ), (
         'Lighter',
-        '1.99',
+        1.99,
         'Tools',
         'Uses gas. Produces flame. High quality. Older than matches. 3000 ignitions guaranteed.',
         'briquet1.png'
     ), (
         'Gourd',
-        '9.99',
+        9.99,
         'Tools',
         'Sealable liquid container. 700mL capacity.',
         'gourde1.png'
@@ -496,8 +496,8 @@ VALUES (
         TRUE,
         NULL
     );
-    
-    INSERT INTO
+
+INSERT INTO
     `training` (
         `title`,
         `description`,
@@ -548,5 +548,28 @@ VALUES (
         'Easy',
         7
     );
-    
-    INSERT INTO `booked_training` (start_time, end_time, impairment, training_id, teacher_id, user_id) VALUES ('2023-09-11 8:00:00', '2023-09-11 10:00:00', 'visual', 1, 3, 1), ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 4, 2, 1);
+
+INSERT INTO
+    `booked_training` (
+        start_time,
+        end_time,
+        impairment,
+        training_id,
+        teacher_id,
+        user_id
+    )
+VALUES (
+        '2023-09-11 8:00:00',
+        '2023-09-11 10:00:00',
+        'visual',
+        1,
+        3,
+        1
+    ), (
+        '2023-09-11 10:00:00',
+        '2023-09-11 12:00:00',
+        'visual',
+        4,
+        2,
+        1
+    );
