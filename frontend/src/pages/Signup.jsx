@@ -35,7 +35,7 @@ function Signin() {
         .then((res) => {
           setUser(res.data);
           localStorage.setItem("user", JSON.stringify(res.data));
-          navigate("/");
+          navigate("/dashboard");
         });
     }
   };

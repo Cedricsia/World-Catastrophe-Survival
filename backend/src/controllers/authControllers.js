@@ -38,4 +38,19 @@ const logout = (req, res) => {
   res.clearCookie("auth_token").sendStatus(200);
 };
 
-module.exports = { signin, signup, logout };
+const editMandatory = async (req, res) => {
+  const olduser = req.user;
+  const newUser = { ...olduser, ...req.body };
+
+  const [result] = await tables.user.updateMandatory(newUser);
+
+  delete req.body.password;
+
+  if (result.affectedRows) {
+    res.status(201).send({ id: result.insertId, ...req.body });
+  } else {
+    res.sendStatus(500);
+  }
+};
+
+module.exports = { signin, signup, logout, editMandatory };
