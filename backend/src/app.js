@@ -90,6 +90,11 @@ app.use(
   express.static(path.join(__dirname, "../public/assets/images"))
 );
 
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 /* ************************************************************************* */
 
 // Production-ready setup: What is it for, and when should I enable it?
