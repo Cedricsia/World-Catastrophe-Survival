@@ -60,7 +60,11 @@ function Sidebar() {
                       src={isActive ? blueBrain : brain}
                       alt={isActive ? "blue-brain" : "brain"}
                     />
-                    <p className={isActive ? "text-primary" : "text-base-100"}>
+                    <p
+                      className={`text-xl font-bold ${
+                        isActive ? "text-primary" : "text-base-100"
+                      }`}
+                    >
                       Dashboard
                     </p>
                   </div>
@@ -77,7 +81,11 @@ function Sidebar() {
                       src={isActive ? blueBook : book}
                       alt={isActive ? "blue-book" : "book"}
                     />
-                    <p className={isActive ? "text-primary" : "text-base-100"}>
+                    <p
+                      className={`text-xl font-bold ${
+                        isActive ? "text-primary" : "text-base-100"
+                      }`}
+                    >
                       Tutorials
                     </p>
                   </div>
@@ -94,7 +102,11 @@ function Sidebar() {
                       src={isActive ? blueTrain : train}
                       alt={isActive ? "blue-train" : "train"}
                     />
-                    <p className={isActive ? "text-primary" : "text-base-100"}>
+                    <p
+                      className={`text-xl font-bold ${
+                        isActive ? "text-primary" : "text-base-100"
+                      }`}
+                    >
                       Trainings
                     </p>
                   </div>
@@ -111,7 +123,11 @@ function Sidebar() {
                       src={isActive ? blueShop : shop}
                       alt={isActive ? "blue-shop" : "shop"}
                     />
-                    <p className={isActive ? "text-primary" : "text-base-100"}>
+                    <p
+                      className={`text-xl font-bold ${
+                        isActive ? "text-primary" : "text-base-100"
+                      }`}
+                    >
                       e-Shop
                     </p>
                   </div>

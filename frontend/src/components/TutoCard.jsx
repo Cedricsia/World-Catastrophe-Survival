@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 function TutoCard({ tuto }) {
   return (
-    <div className="border-black border rounded-md flex flex-col m-2 w-76  ">
+    <div className="border-black border rounded-md flex flex-col m-2 w-76 pb-2 md:pr-1 md:pb-0">
       <div className="m-1">
         <p className="text-primary font-bold ml-4 mt-1 md:text-2xl ">
           {tuto.title}
         </p>
         <div className="flex flex-row ml-4 mt-1 justify-between">
-          <div className="flex">
+          <div className="flex gap-3 md:items-center">
             <img
               src={`${import.meta.env.VITE_BACKEND_URL}/images/${tuto.image}`}
               alt=""
