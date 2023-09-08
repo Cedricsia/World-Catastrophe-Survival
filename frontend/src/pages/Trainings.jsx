@@ -16,48 +16,50 @@ function Trainings() {
 
   return (
     <div className="w-full">
-      <div className="flex  flex-col items-center gap-5">
-        <div className="w-full h-14 bg-primary flex justify-center items-center lg:hidden">
+      <div className="flex flex-col items-center">
+        <div className="w-full mt-20 h-14 bg-primary flex justify-center items-center lg:hidden">
           <h1 className="text-3xl font-bold text-secondary">Trainings</h1>
         </div>
-        <div>
-          <h2 className="text-xl text-primary text-center">Categories:</h2>
-          <div className="flex gap-1">
-            <button type="button" className="btn btn-primary text-secondary">
-              Combat
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Engineering
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Exploration
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Medical
-            </button>
+        <div className="w-full flex flex-col">
+          <div className="flex flex-col gap-2 my-3">
+            <h2 className="text-xl text-primary text-center">Categories:</h2>
+            <div className="w-10/12 grid grid-cols-2 mx-auto gap-1 md:grid-cols-4">
+              <button type="button" className="btn btn-primary text-secondary">
+                Combat
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Engineering
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Exploration
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Medical
+              </button>
+            </div>
           </div>
-        </div>
-        <div>
-          <h2 className="text-xl text-primary text-center">
-            Adapted to people with a disorder :
-          </h2>
-          <div className="flex gap-1">
-            <button type="button" className="btn btn-primary text-secondary">
-              Hearing
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Intellectual
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Physical
-            </button>
-            <button type="button" className="btn btn-primary text-secondary">
-              Visual
-            </button>
+          <div className="flex flex-col gap-2 my-3">
+            <h2 className="text-xl text-primary text-center">
+              Adapted to people with a disorder :
+            </h2>
+            <div className="w-10/12 grid grid-cols-2 mx-auto gap-1 md:grid-cols-4">
+              <button type="button" className="btn btn-primary text-secondary">
+                Hearing
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Intellectual
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Physical
+              </button>
+              <button type="button" className="btn btn-primary text-secondary">
+                Visual
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap  ">
+      <div className="flex flex-col md:grid md:grid-cols-2">
         {trainingList.length &&
           trainingList.map((training) => (
             <div className="">
