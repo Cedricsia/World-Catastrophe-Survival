@@ -174,19 +174,23 @@ function Eshop({ chatModal, setChatModal }) {
           <div className="bg-accent md:bg-base-100  md:my-4">
             <div className="hidden md:flex md:mb-10 md:ml-10">
               {!chatModal && (
-                <div className="hidden md:flex flex-row md:ml-96">
-                  <img src={AI} alt="AI" />
-                  <h1 className="ml-10 text-4xl p-3 rounded bg-accent w-[660px]">
-                    We are using AI to detect your mood and suggest you the
-                    best!!
-                    <button
-                      onClick={() => setChatModal(true)}
-                      type="button"
-                      className="p-1 mt-4 w-[150px] h-24 text-2xl bg-primary text-secondary rounded-lg ml-[450px]"
-                    >
-                      UNLOCK IT!
-                    </button>
-                  </h1>
+                <div className="hidden md:flex flex-col items-end md:ml-96 bg-base-200 p-2">
+                  <div className="flex">
+                    <img src={AI} alt="AI" />
+                    <h2 className="ml-10 text-4xl text-neutral p-3 rounded w-[660px]">
+                      Our new IA engine is available
+                      <br />
+                      <br />
+                      Unlock it and ask him few questions
+                    </h2>
+                  </div>
+                  <button
+                    onClick={() => setChatModal(true)}
+                    type="button"
+                    className="p-1 mt-4 w-[150px] h-16 text-2xl bg-primary text-secondary rounded-lg ml-[450px]"
+                  >
+                    Accept IA
+                  </button>
                 </div>
               )}
             </div>
