@@ -4,7 +4,7 @@ import { useUserContext } from "../contexts/UserContext";
 import expressApi from "../services/expressApi";
 
 function Profile() {
-  const [setUser, user] = useUserContext();
+  const [user, setUser] = useUserContext();
 
   const [editMandatory, setEditMandatory] = useState(false);
   const [editOptional, setEditOptional] = useState(false);
@@ -77,8 +77,14 @@ function Profile() {
         <h1 className="text-3xl font-bold text-secondary lg:hidden">Profile</h1>
       </div>
       <div className="w-full flex justify-center">
-        {user?.picture ? (
-          "Pic"
+        {user.picture ? (
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/images/profiles/${
+              user.picture
+            }`}
+            alt=""
+            className="h-40  m-1 "
+          />
         ) : (
           <svg
             width="160"

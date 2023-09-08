@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import expressApi from "../services/expressApi";
 
-import profile from "../assets/profile.svg";
 import blueBrain from "../assets/brain-blue.svg";
 import brain from "../assets/brain.svg";
 import blueBook from "../assets/blue-book.svg";
@@ -12,10 +11,9 @@ import train from "../assets/train.svg";
 import blueShop from "../assets/blue-shop.svg";
 import shop from "../assets/shop.svg";
 import off from "../assets/off.svg";
-import on from "../assets/on.svg";
 
 function Sidebar({ setSidebar, sidebar }) {
-  const [setUser, user] = useUserContext();
+  const [user, setUser] = useUserContext();
 
   const navigate = useNavigate();
 
@@ -47,7 +45,42 @@ function Sidebar({ setSidebar, sidebar }) {
               onClick={closeSidebar}
               className="flex flex-col items-center"
             >
-              <img src={profile} alt="profile-pic" className="w-44 my-4" />
+              {user.picture !== null ? (
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_URL}/images/profiles/${
+                    user.picture
+                  }`}
+                  alt=""
+                  className="h-40  m-1 "
+                />
+              ) : (
+                <svg
+                  width="160"
+                  height="160"
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="profile">
+                    <path
+                      id="Vector"
+                      d="M40 6.66663C21.59 6.66663 6.66663 21.59 6.66663 40C6.66663 58.41 21.59 73.3333 40 73.3333C58.41 73.3333 73.3333 58.41 73.3333 40C73.3333 21.59 58.41 6.66663 40 6.66663Z"
+                      stroke="#EAE4D5"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      id="Vector_2"
+                      d="M14.2367 61.1533C14.2367 61.1533 21.6667 51.6667 40 51.6667C58.3334 51.6667 65.7667 61.1533 65.7667 61.1533M40 40C42.6522 40 45.1957 38.9464 47.0711 37.0711C48.9465 35.1957 50 32.6522 50 30C50 27.3478 48.9465 24.8043 47.0711 22.9289C45.1957 21.0536 42.6522 20 40 20C37.3479 20 34.8043 21.0536 32.929 22.9289C31.0536 24.8043 30 27.3478 30 30C30 32.6522 31.0536 35.1957 32.929 37.0711C34.8043 38.9464 37.3479 40 40 40Z"
+                      stroke="#EAE4D5"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                </svg>
+              )}
               <p className="text-base-100 text-2xl font-bold">
                 {user ? user.username : "Name"}
               </p>
@@ -141,7 +174,7 @@ function Sidebar({ setSidebar, sidebar }) {
           </ul>
         </div>
       )}
-      {user ? (
+      {user && (
         <button
           type="button"
           className="flex items-center mb-20 gap-2"
@@ -150,17 +183,6 @@ function Sidebar({ setSidebar, sidebar }) {
           <img src={off} alt="disconnect-button" />
           <h1 className="text-base-100 text-xl font-bold">Disconnect</h1>
         </button>
-      ) : (
-        <div className="hover:border-b-4 hover:border-slate-800 hover:font-bold transition-all duration-300 mb-20">
-          <NavLink
-            to="/signin"
-            onClick={closeSidebar}
-            className="flex items-center gap-4"
-          >
-            <img src={on} alt="connexion-button" />
-            <h1 className="text-base-100 text-xl font-bold">Connexion</h1>
-          </NavLink>
-        </div>
       )}
     </div>
   );

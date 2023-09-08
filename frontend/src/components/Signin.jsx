@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
 import expressApi from "../services/expressApi";
 
-function Login() {
+function Signin({ setChange }) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  const [setUser] = useUserContext();
+  const [, setUser] = useUserContext();
 
   const navigate = useNavigate();
 
@@ -29,15 +29,20 @@ function Login() {
     }
     /* else toastify */
   };
+  const handleSign = () => {
+    setChange(false);
+  };
 
   return (
-    <div className="w-96 mt-24">
+    <div className="my-12 mt-8 lg:mt-0 mx-2">
       <div className="flex justify-around items-center h-16">
         <div className="bg-primary w-1/2 rounded-tl-xl flex justify-center items-center h-16 text-secondary text-3xl font-bold">
-          <button type="button">Log in </button>
+          <button type="button">◆ Log in </button>
         </div>
         <div className="bg-neutral w-1/2 rounded-tr-xl text-center flex justify-center items-center h-16 text-accent text-3xl font-bold">
-          <NavLink to="/signup">Sign up</NavLink>
+          <button type="button" onClick={handleSign}>
+            Sign up
+          </button>
         </div>
       </div>
       <form
@@ -81,4 +86,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signin;
