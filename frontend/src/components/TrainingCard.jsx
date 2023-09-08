@@ -32,7 +32,7 @@ function TrainingCard({
     <div className="w-full flex justify-center">
       <div className="w-10/12 border-primary border m-2 rounded-b-xl rounded-t-2xl">
         <div className="bg-primary rounded-t-xl flex p-2">
-          <h3 className="bg-primary rounded-t-xl text-xl text-secondary md:flex md:items-center font bold">
+          <h3 className="bg-primary rounded-t-xl text-xl text-secondary md:flex md:items-center font-bold">
             {title}
           </h3>
         </div>

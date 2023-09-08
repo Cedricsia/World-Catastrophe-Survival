@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import TrainingCard from "../components/TrainingCard";
+/* eslint-disable import/no-unresolved */
+import TrainingCard from "../Components/TrainingCard";
 
 function Trainings() {
   const [trainingList, setTrainingList] = useState([]);

@@ -262,7 +262,7 @@ export default function TrainingModal({
         </div>
       </div>
       <h3 className="flex justify-center text-xl my-2 font-bold">
-        Choose a lesson adaptation:{" "}
+        Choose a lesson adaptation:
       </h3>
       <div className="flex md:justify-center md:gap-5">
         {canVisual !== 0 && (
@@ -282,7 +282,7 @@ export default function TrainingModal({
           <button
             type="button"
             onClick={() => changeAdaptation("Auditive")}
-            className={`m-5 p-2 bg-primary text-secondary text-lg font-bold rounded-md ${
+            className={`ml-1 h-20 bg-primary text-secondary text-lg font-bold rounded-md ${
               adaptation === "Auditive"
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
@@ -295,7 +295,7 @@ export default function TrainingModal({
           <button
             type="button"
             onClick={() => changeAdaptation("Motor")}
-            className={`ml-1  h-20 bg-primary text-secondary text-lg font-bold rounded-md${
+            className={`ml-1  h-20 bg-primary text-secondary text-lg font-bold rounded-md ${
               adaptation === "Motor"
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
