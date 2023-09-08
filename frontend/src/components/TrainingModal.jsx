@@ -8,6 +8,7 @@ export default function TrainingModal({
   title,
   description,
   category,
+  difficulty,
   firstname,
   lastname,
   canVisual,
@@ -230,31 +231,57 @@ export default function TrainingModal({
 
   return (
     <dialog
-      className="h-full w-full "
+      className="h-full w-full border-4 border-primary rounded-lg subpixel-antialiased  "
       ref={modalRef}
       onKeyDown={handleKeyDown}
       role="presentation"
     >
       <div>
-        <h3>{title}</h3>
-        <div className="flex">
-          <img
-            src={`${
-              import.meta.env.VITE_BACKEND_URL
-            }/profiles/${profilepicture}`}
-            alt={(firstname, lastname)}
-          />
-          <p>{description}</p>
+        <h3 className="bg-primary text-2xl text-secondary font-bold p-6 ">
+          {title}
+        </h3>
+        <div className="flex max-w-">
+          <div className="m-2 w-36  sm:w-48  md:w-56  lg:w-64 ">
+            <img
+              src={`${
+                import.meta.env.VITE_BACKEND_URL
+              }/profiles/${profilepicture}`}
+              alt={(firstname, lastname)}
+              className="max-w-none w-20 h-20 sm:w-28 sm:h-28 md:w-48 md:h-48 lg:w-56 lg:h-56"
+            />
+            <div className="ml-2 mt-1 font-semibold flex flex-wrap ">
+              <span className="mr-1">Teacher: </span>
+              <span className="">
+                {firstname} {lastname}
+              </span>
+            </div>
+          </div>
+          <div>
+            <p className=" p-4 md:p-8 text-center text-xl md:text-2xl font-semibold align-middle subpixel-antialiased">
+              {description}
+            </p>
+            <div className="m-12 text-xl">
+              <div>
+                <span>Category: </span>
+                <span> {category} </span>
+              </div>
+              <div>
+                <span>Difficulty: </span>
+                <span> {difficulty} </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>
-        <span>Teacher: </span>
-        <span> {firstname} </span>
-        <span>{lastname}</span>
-      </div>
-      <div>
-        <span>Category: </span>
-        <span> {category} </span>
+        <div>
+          <div>
+            <span>Category: </span>
+            <span> {category} </span>
+          </div>
+          <div>
+            <span>Difficulty: </span>
+            <span> {difficulty} </span>
+          </div>
+        </div>
       </div>
       <h3>Choose a lesson adaptation: </h3>
       <div className="flex">
