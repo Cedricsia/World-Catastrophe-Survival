@@ -142,7 +142,7 @@ function Eshop({ chatModal, setChatModal }) {
   return (
     <div className="flex flex-col mt-7 w-screen md:w-full">
       <div className="bg-primary flex justify-end px-2  md:h-[160px] md:bg-inherit">
-        <h1 className="bg-primary text-secondary text-3xl  md:mt-10 md:hidden p-2">
+        <h1 className="bg-primary text-secondary text-3xl md:mt-10 md:hidden p-2">
           eShop
         </h1>
         <button type="button" onClick={changeView}>

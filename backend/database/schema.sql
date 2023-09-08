@@ -114,12 +114,6 @@ CREATE TABLE
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `day`(
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
 CREATE TABLE IF NOT EXISTS `booked_training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `start_time` DATETIME NOT NULL,
@@ -150,16 +144,16 @@ CREATE TABLE event (
   id int NOT NULL AUTO_INCREMENT,
   title varchar(64) NOT NULL,
   advice varchar(100) DEFAULT NULL,
-  start_time datetime DEFAULT NULL,
+  start_time DATETIME DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table event
 --
 
 LOCK TABLES event WRITE;
-INSERT INTO event VALUES (21,'Zombie Invasion','Grab a baseball bat and swing for the fences! ','2023-09-18 10:00:00'),(22,'Meteor Shower','Grab your umbrellas!','2023-09-16 14:00:00'),(23,'Volcanic Eruption','Watch out, it''s getting hot!','2023-09-14 14:00:00'),(24,'Tsunami','Don''t forget your water bottle! ','2023-09-21 06:00:00'),(25,'Nuclear Blast','Dont forget your tutorial! ','2023-09-25 11:00:00');
+INSERT INTO event VALUES (21,'Zombie Invasion','Grab a baseball bat and swing for the fences! ','2023-09-18 10:00:00'),(22,'Meteor Shower','Grab your umbrellas!','2023-09-16 14:00:00'),(23,'Volcanic Eruption','Watch out, it\s getting hot!','2023-09-14 14:00:00'),(24,'Tsunami','Don\t forget your water bottle! ','2023-09-21 06:00:00'),(25,'Nuclear Blast','Dont forget your tutorial! ','2023-09-25 11:00:00');
 
 UNLOCK TABLES;
 

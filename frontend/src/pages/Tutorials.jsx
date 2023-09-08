@@ -4,7 +4,6 @@ import axios from "axios";
 import TutoCard from "../components/TutoCard";
 import arrowUp from "../assets/arrow-up.svg";
 import arrowDown from "../assets/arrow-down.svg";
-import info from "../assets/info.svg";
 
 function Tutorials() {
   const [visible, setVisible] = useState(true);
@@ -39,11 +38,8 @@ function Tutorials() {
 
   return (
     <div className="flex flex-col w-full mt-20 md:mt-3 md:mb-5">
-      <div className="bg-primary flex justify-between md:hidden">
-        <h1 className="bg-primary text-secondary text-3xl p-2">Tutorials</h1>
-        <button type="button" className="mr-2">
-          <img src={info} alt="Information" className="h-10" />
-        </button>
+      <div className="w-full h-14 bg-primary flex justify-center items-center lg:hidden">
+        <h1 className="text-3xl font-bold text-secondary">Tutorials</h1>
       </div>
       <div>
         <div className="flex gap-2 bg-accent p-2 md:hidden">
