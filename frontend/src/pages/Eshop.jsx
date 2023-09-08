@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import shop from "../assets/shop.svg";
+import shop from "../assets/shop-gris.svg";
 import arrowUp from "../assets/arrow-up.svg";
 import arrowDown from "../assets/arrowDown.svg";
 import plus from "../assets/plus.svg";

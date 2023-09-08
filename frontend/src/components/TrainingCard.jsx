@@ -29,21 +29,36 @@ function TrainingCard({
   };
 
   return (
-    <>
-      <div>
-        <h3>{title}</h3>
-        <div className="flex">
-          <img
-            src={`${
-              import.meta.env.VITE_BACKEND_URL
-            }/profiles/${profilepicture}`}
-            alt={(firstname, lastname)}
-          />
-          <p>{description}</p>
+    <div className=" md:w-[500px] md:h-52  md:flex md:justify-between">
+      <div className="border-primary border m-2 rounded-xl ">
+        <div className="bg-primary rounded-t-xl flex ">
+          <h3 className="bg-primary rounded-t-xl text-xl h-10 text-secondary md:flex md:items-center md:pl-2 font bold">
+            {title}
+          </h3>
         </div>
-        <button type="button" onClick={openModal}>
-          Book a lesson
-        </button>
+        <div className="flex flex-row md:m-1 gap-4  items-center">
+          <div className="md:flex ">
+            <img
+              src={`${
+                import.meta.env.VITE_BACKEND_URL
+              }/profiles/${profilepicture}`}
+              alt={(firstname, lastname)}
+              className="w-28 m-2 flex-grow"
+            />
+          </div>
+          <div className="md:flex md:flex-col md:items-center md:gap-2 ">
+            <p className="flex-grow">{description}</p>
+            <div className="flex justify-center ">
+              <button
+                type="button"
+                onClick={openModal}
+                className="  btn btn-primary text-secondary mb-2 "
+              >
+                Book a lesson
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <TrainingModal
         isOpen={isModalOpen}
@@ -62,7 +77,7 @@ function TrainingCard({
         teacherId={teacherId}
         trainingId={trainingId}
       />
-    </>
+    </div>
   );
 }
 
