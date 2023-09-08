@@ -52,7 +52,7 @@ function Eshop({ chatModal, setChatModal }) {
 
   const checkout = () => {
     toast.success(
-      "Your order has been placed successfully!!, be ready to pay the delivery guy!! Thank you for shopping with us!! 😊 Your Total is gona be : " +
+      "Your order has been placed successfully!!, be ready to pay the delivery guy!! Thank you for shopping with us!! 😊 Your Total is gonna be : " +
         totalPrice.toFixed(2) +
         "€"
     );
@@ -197,8 +197,14 @@ function Eshop({ chatModal, setChatModal }) {
                   <div className="ml-3 md:ml-0" key={uuidv4()}>
                     <button
                       type="button"
-                      className="btn btn-primary w-36 h-10 md:flex text-secondary md:text-xl md:w-40"
-                      onClick={() => setSelectedCategory(cat)}
+                      className={`btn btn-primary sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl ${
+                        selectedCategory === cat ? "btn-primary" : "btn-neutral"
+                      }`}
+                      onClick={() =>
+                        setSelectedCategory(
+                          cat === selectedCategory ? null : cat
+                        )
+                      }
                     >
                       {cat}
                     </button>
@@ -478,4 +484,4 @@ function Eshop({ chatModal, setChatModal }) {
   );
 }
 export default Eshop;
-/*esl-int-disable*/
+/*eslint-disable*/
