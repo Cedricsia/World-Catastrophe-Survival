@@ -1,8 +1,8 @@
 // Load the express module to create a web application
-const path = require("node:path");
-const express = require("express");
+/*eslint-disable*/
 const cors = require("cors");
-
+const express = require("express");
+const path = require("path");
 const app = express();
 
 // Configure it
@@ -28,11 +28,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
-    ],
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
@@ -86,6 +84,11 @@ app.use(express.json());
 const router = require("./router");
 
 app.use("/api", router);
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 
 /* ************************************************************************* */
 
@@ -104,24 +107,21 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
-// const reactBuildPath = `${__dirname}/../../frontend/dist`;
-
 // serve react resources
 
 // app.use(express.static(reactBuildPath));
 
 // redirect unhandled requests to the react index file
-
-/*
-app.get("*", (req, res) => {
-  res.sendFile(`${reactBuildPath}/index.html`);
-}); 
-*/
 app.use("/", express.static(path.join(__dirname, "../public")));
 app.use(
   "/images",
   express.static(path.join(__dirname, "../public/assets/images"))
 );
+/*
+app.get("*", (req, res) => {
+  res.sendFile(`${reactBuildPath}/index.html`);
+}); 
+*/
 app.use(
   "/profiles",
   express.static(path.join(__dirname, "../public/assets/images/profiles"))

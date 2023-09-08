@@ -1,5 +1,9 @@
 function Home() {
-  return <div>Home Page</div>;
+  return (
+    <div className="mt-24">
+      <div className="border-[3px] border-accent">Site overview</div>
+    </div>
+  );
 }
 
 export default Home;

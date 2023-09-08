@@ -12,11 +12,11 @@ DROP TABLE IF EXISTS `item`;
 
 DROP TABLE IF EXISTS `booked_training`;
 
-DROP TABLE IF EXISTS `user`;
-
 DROP TABLE IF EXISTS `training_time`;
 
 DROP TABLE IF EXISTS `training`;
+
+DROP TABLE IF EXISTS `user`;
 
 DROP TABLE IF EXISTS `teacher`;
 
@@ -39,6 +39,7 @@ CREATE TABLE
         `category` VARCHAR(64) NOT NULL,
         `difficulty` VARCHAR(64) NOT NULL,
         `content` TEXT NOT NULL,
+        `image` VARCHAR(100) NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -56,12 +57,17 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS `user` (
         `id` INT NOT NULL AUTO_INCREMENT,
+        `role` INT DEFAULT 1 NOT NULL,
         `username` VARCHAR(64) NOT NULL,
-        `firstname` VARCHAR(64) NOT NULL,
-        `lastname` VARCHAR(64) NOT NULL,
         `email` VARCHAR(64) NOT NULL,
-        `gender` VARCHAR(64) NOT NULL,
         `password` VARCHAR(64) NOT NULL,
+        `firstname` VARCHAR(64) NULL,
+        `lastname` VARCHAR(64) NULL,
+        `gender` VARCHAR(64) NULL,
+        `adress` VARCHAR(250) NULL,
+        `zipcode` VARCHAR(64) NULL,
+        `city` VARCHAR(64) NULL,
+        `country` VARCHAR(64) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -108,6 +114,13 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE
+    IF NOT EXISTS `day`(
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(10) NOT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE
     IF NOT EXISTS `booked_training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `start_time` DATETIME NOT NULL,
@@ -130,6 +143,13 @@ CREATE TABLE
         `training_id` INT NOT NULL,
         PRIMARY KEY (`id`, `training_id`),
         CONSTRAINT `fk_training_time_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE
+    IF NOT EXISTS `event` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `title` VARCHAR(64) NOT NULL,
+        PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 INSERT INTO
@@ -155,69 +175,83 @@ INSERT INTO
         `title`,
         `category`,
         `difficulty`,
-        `content`
+        `content`,
+        `image`
     )
 VALUES (
         'Build your own nuclear shelter',
         'Engineering',
         'Medium',
-        'Sample'
+        'Sample',
+        'Engineering.png'
     ), (
         'First aid best practice',
         'Medical',
         'Medium',
-        'Sample'
+        'Sample',
+        'Medical.png'
     ), (
         'Scouting techniques',
         'Exploration',
         'Easy',
-        'Sample'
+        'Sample',
+        'Exploration.png'
     ), (
         'Zombies: close combat skills',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
         'How to deal with humanoid threat',
         'Combat',
         'Medium',
-        'Sample'
+        'Sample',
+        'Combat.png'
     ), (
         'Rat cooking course',
         'Exploration',
         'Easy',
-        'Sample'
-    ), (
-        'Limb amputation workshop',
-        'Medical',
-        'Hard',
-        'Sample'
-    ), (
-        'Build a barricade to protect yourself against zombie hordes',
-        'Medium',
-        'Engineering',
-        'Sample'
-    ), (
-        'Flying ennemies : how to protect your head',
-        'Combat',
-        'Medium',
-        'Sample'
-    ), (
-        'Food poisoning : how to cure it with wild roots',
-        'Medical',
-        'Easy',
-        'Sample'
-    ), (
-        'Firearms maintenance : full course',
-        'Engineering',
-        'Easy',
-        'Sample'
-    ), (
-        "Safe exploration techniques : you'll never wander in a bear den anymore",
-        'Exploration',
-        'Hard',
-        'Sample'
-    );
+        'Sample',
+        'Exploration.png'
+
+), (
+    'Limb amputation workshop',
+    'Medical',
+    'Hard',
+    'Sample',
+    'Medical.png'
+), (
+    'Build a barricade',
+    'Medium',
+    'Engineering',
+    'Sample',
+    'Engineering.png'
+), (
+    'Flying ennemies',
+    'Combat',
+    'Medium',
+    'Sample',
+    'Combat.png'
+), (
+    'Food poisoning',
+    'Medical',
+    'Easy',
+    'Sample',
+    'Medical.png'
+), (
+    'Firearms maintenance',
+    'Engineering',
+    'Easy',
+    'Sample',
+    "Engineering.png"
+), (
+    "Safe exploration techniques",
+    'Exploration',
+    'Hard',
+    'Sample',
+    'Exploration.png'
+);
 
 INSERT INTO
     `item` (
@@ -406,6 +440,32 @@ VALUES (
 INSERT INTO
     `user` (
         `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        "Cool User",
+        "user@user.fr",
+        "user"
+    );
+
+INSERT INTO
+    `user` (
+        `role`,
+        `username`,
+        `email`,
+        `password`
+    )
+VALUES (
+        2,
+        "Admin User",
+        "admin@admin.fr",
+        "admin"
+    );
+
+INSERT INTO
+    `user` (
+        `username`,
         `firstname`,
         `lastname`,
         `email`,
@@ -585,6 +645,9 @@ VALUES (
         7
     );
 
+INSERT INTO `day` (name)
+VALUES ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday');
+
 INSERT INTO
     `booked_training` (
         start_time,
@@ -595,17 +658,34 @@ INSERT INTO
         user_id
     )
 VALUES (
-        '2023-09-11 8:00:00',
         '2023-09-11 10:00:00',
-        'Visual',
+        '2023-09-11 12:00:00',
+        'visual',
         1,
         3,
         1
     ), (
-        '2023-09-11 10:00:00',
         '2023-09-11 12:00:00',
-        'Visual',
+        '2023-09-11 14:00:00',
+        'visual',
         4,
         2,
         1
+    ), (
+        '2023-09-11 16:00:00',
+        '2023-09-11 18:00:00',
+        'visual',
+        1,
+        1,
+        1
+    ), (
+        '2023-09-11 18:00:00',
+        '2023-09-11 20:00:00',
+        'visual',
+        5,
+        4,
+        1
     );
+
+INSERT INTO `event` (title)
+VALUES ('Zombie Invasion'), ('Meteor Shower'), ('Volcanic Eruption'), ('Tsunami'), ('Nuclear Blast');
