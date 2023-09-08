@@ -12,6 +12,7 @@ import train from "../assets/train.svg";
 import blueShop from "../assets/blue-shop.svg";
 import shop from "../assets/shop.svg";
 import off from "../assets/off.svg";
+import Dictaphone from "./Dictaphone";
 
 function Sidebar() {
   const [user, setUser] = useUserContext();
@@ -171,6 +172,7 @@ function Sidebar() {
             </div>
           )}
         </div>
+        <Dictaphone />
 
         {user && (
           <button
