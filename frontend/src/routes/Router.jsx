@@ -8,8 +8,6 @@ import Eshop from "../pages/Eshop";
 import Profile from "../pages/Profile";
 import NoMatch from "../pages/NoMatch";
 import TutorialId from "../pages/tutorialId";
-import Signin from "../pages/Signin";
-import Signup from "../pages/Signup";
 
 function Router({ chatModal, setChatModal }) {
   return (
@@ -24,8 +22,6 @@ function Router({ chatModal, setChatModal }) {
         element={<Eshop chatModal={chatModal} setChatModal={setChatModal} />}
       />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
   );

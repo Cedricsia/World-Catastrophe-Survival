@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import TrainingCard from "../Components/TrainingCard";
+import TrainingCard from "../components/TrainingCard";
 
 function Trainings() {
   const [trainingList, setTrainingList] = useState([]);

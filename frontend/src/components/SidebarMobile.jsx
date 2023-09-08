@@ -12,10 +12,9 @@ import train from "../assets/train.svg";
 import blueShop from "../assets/blue-shop.svg";
 import shop from "../assets/shop.svg";
 import off from "../assets/off.svg";
-import on from "../assets/on.svg";
 
 function Sidebar({ setSidebar, sidebar }) {
-  const [setUser, user] = useUserContext();
+  const [user, setUser] = useUserContext();
 
   const navigate = useNavigate();
 
@@ -141,7 +140,7 @@ function Sidebar({ setSidebar, sidebar }) {
           </ul>
         </div>
       )}
-      {user ? (
+      {user && (
         <button
           type="button"
           className="flex items-center mb-20 gap-2"
@@ -150,17 +149,6 @@ function Sidebar({ setSidebar, sidebar }) {
           <img src={off} alt="disconnect-button" />
           <h1 className="text-base-100 text-xl font-bold">Disconnect</h1>
         </button>
-      ) : (
-        <div className="hover:border-b-4 hover:border-slate-800 hover:font-bold transition-all duration-300 mb-20">
-          <NavLink
-            to="/signin"
-            onClick={closeSidebar}
-            className="flex items-center gap-4"
-          >
-            <img src={on} alt="connexion-button" />
-            <h1 className="text-base-100 text-xl font-bold">Connexion</h1>
-          </NavLink>
-        </div>
       )}
     </div>
   );

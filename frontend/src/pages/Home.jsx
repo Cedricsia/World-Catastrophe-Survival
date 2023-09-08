@@ -1,15 +1,16 @@
 import { useState } from "react";
-import Signup from "./Signup";
-import Signin from "./Signin";
+import Signup from "../components/Signup";
+import Signin from "../components/Signin";
 import AboutUs from "../components/AboutUs";
+import { useUserContext } from "../contexts/UserContext";
 
 function Home() {
   const [change, setChange] = useState(true);
+
+  const [user] = useUserContext();
+
   return (
-    <div className="md:w-full">
-      <div className="mt-24">
-        <div className="border-[3px] border-accent">Site overview</div>
-      </div>
+    <div className="md:w-full mt-24">
       <div id="conteneur" className="md:flex md:flex-row flex-col ">
         <div
           id="pres"
@@ -21,11 +22,8 @@ function Home() {
           id="login"
           className=" md:w-1/2   md:flex md:justify-center md:items-start"
         >
-          {change ? (
-            <Signin setChange={setChange} />
-          ) : (
-            <Signup setChange={setChange} />
-          )}
+          {!user && change && <Signin setChange={setChange} />}
+          {!user && !change && <Signup setChange={setChange} />}
         </div>
       </div>
     </div>

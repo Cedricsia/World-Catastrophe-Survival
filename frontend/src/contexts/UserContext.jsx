@@ -9,7 +9,7 @@ function useUserContext() {
 function UserContextProvider({ children }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  const value = useMemo(() => [setUser, user], [user]);
+  const value = useMemo(() => [user, setUser], [user]);
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;
 }
