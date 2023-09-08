@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import shop from "../assets/shop.svg";
+import shop from "../assets/shop-gris.svg";
 import arrowUp from "../assets/arrow-up.svg";
 import arrowDown from "../assets/arrowDown.svg";
 import plus from "../assets/plus.svg";
@@ -142,7 +142,7 @@ function Eshop({ chatModal, setChatModal }) {
   return (
     <div className="flex flex-col mt-7 w-screen md:w-full">
       <div className="bg-primary flex justify-end px-2  md:h-[160px] md:bg-inherit">
-        <h1 className="bg-primary text-secondary text-3xl md:text-5xl md:mt-10 md:hidden p-2">
+        <h1 className="bg-primary text-secondary text-3xl  md:mt-10 md:hidden p-2">
           eShop
         </h1>
         <button type="button" onClick={changeView}>
@@ -152,7 +152,7 @@ function Eshop({ chatModal, setChatModal }) {
       <div className="md:mt-5">
         <div className="bg-accent   border-2  border-b-neutral md:bg-base-100 md:hidden ">
           <h1 className="text-3xl text-neutral">
-            My Basket{" "}
+            My Basket
             <button type="button" onClick={changeView}>
               <img src={shop} alt="shop-icon" className="h-10 pt-1" />
             </button>

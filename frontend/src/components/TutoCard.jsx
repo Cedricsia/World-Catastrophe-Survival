@@ -4,9 +4,9 @@ function TutoCard({ tuto }) {
   return (
     <div className="border-black border rounded-md flex flex-col m-2 w-76 pb-2 md:pr-1 md:pb-0">
       <div className="m-1">
-        <p className="text-primary font-bold ml-4 mt-1 md:text-2xl ">
+        <h2 className="text-primary font-bold ml-4 mt-1 md:text-2xl ">
           {tuto.title}
-        </p>
+        </h2>
         <div className="flex flex-row ml-4 mt-1 justify-between">
           <div className="flex gap-3 md:items-center">
             <img
@@ -22,9 +22,9 @@ function TutoCard({ tuto }) {
           <div className="flex-col flex justify-end ">
             <button
               type="button"
-              className="btn btn-primary hidden md:flex text-secondary md:text-xl"
+              className="btn btn-primary hidden md:flex text-secondary md:text-2xl"
             >
-              <Link to={`/tutorials/${tuto.id}`}>Read more</Link>
+              <Link to={`/tutorials/${tuto.id}`}>Information</Link>
             </button>
           </div>
         </div>
@@ -34,7 +34,7 @@ function TutoCard({ tuto }) {
           type="button"
           className="btn btn-primary text-secondary  md:hidden text-xs md:text-xl"
         >
-          <Link to={`/tutorials/${tuto.id}`}>Read more</Link>
+          <Link to="/tutorials/1">Information</Link>
         </button>
       </div>
     </div>

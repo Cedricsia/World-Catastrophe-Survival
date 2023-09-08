@@ -6,15 +6,45 @@ import "react-agenda-calendar/dist/index.css";
 import formatCalendarDate from "../services/formatCalendarDate";
 
 function Calendars() {
-  const [agenda, setAgenda] = useState(null);
+  const [agenda, setAgenda] = useState([]);
+
+  const fetchAgenda = async () => {
+    const trainingsRes = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/booked_trainings/user/1`
+    );
+    const trainings = await trainingsRes.json();
+
+    const eventsRes = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/events`
+    );
+    const events = await eventsRes.json();
+
+    const result = await Promise.all([...trainings]);
+
+    setAgenda(result.map((date) => formatCalendarDate(date)));
+  };
+
+  console.log(agenda);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/booked_trainings/user/1`)
-      .then((res) =>
-        setAgenda(res.data.map((date) => formatCalendarDate(date)))
-      )
-      .catch((err) => console.error(err));
+    // axios
+    //   .get(`${import.meta.env.VITE_BACKEND_URL}/api/booked_trainings/user/1`)
+    //   .then((res) =>
+    //     setAgenda([
+    //       ...agenda,
+    //       ...res.data.map((date) => formatCalendarDate(date)),
+    //     ])
+    //   )
+    //   .catch((err) => console.error(err));
+    // axios
+    //   .get(`${import.meta.env.VITE_BACKEND_URL}/api/events`)
+    //   .then((res) =>
+    //     setAgenda([
+    //       ...agenda,
+    //       ...res.data.map((event) => formatCalendarDate(event)),
+    //     ])
+    //   );
+    fetchAgenda();
   }, []);
 
   const schedule = [
@@ -45,7 +75,6 @@ function Calendars() {
             height: "calc(100% - 40px)",
           }}
           agenda={schedule}
-          currentDate={new Date(2023, 8, 11)}
         />
       )}
     </div>

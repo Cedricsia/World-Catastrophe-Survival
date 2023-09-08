@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { useUserContext } from "../contexts/UserContext";
 
-function Signin() {
+function Signup({ setChange }) {
   const [credentials, setCredentials] = useState({
     username: "",
     email: "",
     password: "",
   });
 
-  const [setUser] = useUserContext();
+  const [, setUser] = useUserContext();
 
   const navigate = useNavigate();
 
@@ -39,15 +39,20 @@ function Signin() {
         });
     }
   };
+  const handleSign = () => {
+    setChange(true);
+  };
 
   return (
-    <div className="mt-24 w-96">
+    <div className="mt-8 lg:mt-0 mx-2">
       <div className="flex justify-around items-center h-16">
         <div className="bg-neutral w-1/2 rounded-tl-xl flex justify-center items-center h-16 text-accent text-3xl font-bold">
-          <NavLink to="/signin">Log in</NavLink>
+          <button type="button" className="" onClick={handleSign}>
+            Log in
+          </button>
         </div>
         <div className="bg-primary w-1/2 rounded-tr-xl text-center flex justify-center items-center h-16 text-secondary text-3xl font-bold">
-          <button type="button">Sign up</button>
+          <button type="button">◆ Sign up</button>
         </div>
       </div>
       <form
@@ -121,4 +126,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Signup;
