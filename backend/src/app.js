@@ -1,6 +1,7 @@
 // Load the express module to create a web application
-const cors = require("cors");
+const path = require("node:path");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
@@ -114,9 +115,16 @@ app.use("/api", router);
 /*
 app.get("*", (req, res) => {
   res.sendFile(`${reactBuildPath}/index.html`);
-});
+}); 
 */
-
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
+app.use(
+  "/profiles",
+  express.static(path.join(__dirname, "../public/assets/images/profiles"))
+);
 /* ************************************************************************* */
-
 module.exports = app;

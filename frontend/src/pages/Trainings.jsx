@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TrainingCard from "../Components/TrainingCard";
 
 function Trainings() {
   const [trainingList, setTrainingList] = useState([]);
@@ -15,6 +16,9 @@ function Trainings() {
 
   return (
     <>
+      <div className="w-full h-14 bg-primary flex justify-center items-center lg:hidden">
+        <h1 className="text-3xl font-bold text-secondary">Trainings</h1>
+      </div>
       <div>
         <h2>Categories</h2>
         <button type="button">Combat</button>
@@ -31,9 +35,22 @@ function Trainings() {
       </div>
       {trainingList.length &&
         trainingList.map((training) => (
-          <div>
-            <p>{training.title}</p>
-          </div>
+          <TrainingCard
+            key={training.title}
+            title={training.title}
+            description={training.description}
+            category={training.category}
+            difficulty={training.difficulty}
+            firstname={training.firstname}
+            lastname={training.lastname}
+            canVisual={training.can_visual}
+            canAuditive={training.can_auditive}
+            canMotor={training.can_motor}
+            canCognitive={training.can_cognitive}
+            profilepicture={training.profilepicture}
+            teacherId={training.teacherId}
+            trainingId={training.trainingId}
+          />
         ))}
     </>
   );

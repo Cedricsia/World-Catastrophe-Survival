@@ -96,20 +96,6 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE
-    IF NOT EXISTS `booked_training` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `start_time` DATETIME NOT NULL,
-        `end_time` DATETIME NOT NULL,
-        `subject` VARCHAR(64) NOT NULL,
-        `impairment` VARCHAR(64) NULL,
-        `teacher_id` INT NOT NULL,
-        `user_id` INT NOT NULL,
-        PRIMARY KEY (`id`),
-        CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
-CREATE TABLE
     IF NOT EXISTS `training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `title` VARCHAR(64) NOT NULL,
@@ -119,6 +105,22 @@ CREATE TABLE
         `teacher_id` INT NOT NULL,
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE
+    IF NOT EXISTS `booked_training` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `start_time` DATETIME NOT NULL,
+        `end_time` DATETIME NOT NULL,
+        `subject` VARCHAR(64) NOT NULL,
+        `impairment` VARCHAR(64) NULL,
+        `training_id` INT NOT NULL,
+        `teacher_id` INT NOT NULL,
+        `user_id` INT NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_lesson_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE
