@@ -12,7 +12,7 @@ import plus from "../assets/plus.svg";
 import minus from "../assets/minus.svg";
 import AI from "../assets/image5.svg";
 function Eshop({ chatModal, setChatModal }) {
-  const [visibleFilter, setVisibleFilter] = useState(false);
+  const [visibleFilter, setVisibleFilter] = useState(true);
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [cart, setCart] = useState([]);
@@ -246,21 +246,14 @@ function Eshop({ chatModal, setChatModal }) {
             </div>
           </div>
         )}
-        <div className="mb-2 md:flex md:flex-wrap md:w-4/5 md:m-auto md:mb-2 md:gap-2">
+        <div className="mb-2 md:grid md:grid-cols-3">
           {!visibleCart &&
             filteredData.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col  border rounded p-2 border-accent w-[360px] m-auto mt-2 md:flex-col md:h-[18rem] "
+                className="flex flex-col  border rounded p-2  border-black  mx-2 mt-2 md:w-76 "
               >
-                <div className="flex">
-                  <img
-                    src={`${import.meta.env.VITE_BACKEND_URL}/images/items/${
-                      item.picture
-                    }`}
-                    alt={item.name}
-                    className="w-16 m-2"
-                  />
+                <div className="flex justify-between">
                   <div className="flex flex-col">
                     <h3 className="text-primary text-xl font-bold m-1">
                       {item.name}
@@ -270,6 +263,20 @@ function Eshop({ chatModal, setChatModal }) {
                       Category: {item.category}
                     </h4>
                   </div>
+                  <img
+                    src={`${import.meta.env.VITE_BACKEND_URL}/images/items/${
+                      item.picture
+                    }`}
+                    alt={item.name}
+                    className=" hidden md:flex  m-2"
+                  />
+                  <img
+                    src={`${import.meta.env.VITE_BACKEND_URL}/images/items/${
+                      item.picture
+                    }`}
+                    alt={item.name}
+                    className=" w-20 md:hidden m-2"
+                  />
                 </div>
                 <p className="mt-2">Description: {item.description}</p>
 
