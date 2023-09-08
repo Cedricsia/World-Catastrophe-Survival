@@ -23,18 +23,32 @@ function Trainings() {
         </div>
         <div className="w-full flex flex-col">
           <div className="flex flex-col gap-2 my-3">
-            <h2 className="text-xl text-primary text-center">Categories:</h2>
-            <div className="w-10/12 grid grid-cols-2 mx-auto gap-2 md:grid-cols-4">
-              <button type="button" className="btn btn-primary text-secondary">
+            <h2 className=" text-primary text-center text-2xl font-semibold">
+              Categories:
+            </h2>
+            <div className=" grid grid-cols-2 mx-auto gap-2 md:grid-cols-4">
+              <button
+                type="button"
+                className="btn btn-neutral sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl min-w-full"
+              >
                 Combat
               </button>
-              <button type="button" className="btn btn-primary text-secondary">
+              <button
+                type="button"
+                className="btn btn-neutral sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl"
+              >
                 Engineering
               </button>
-              <button type="button" className="btn btn-primary text-secondary">
+              <button
+                type="button"
+                className="btn btn-neutral sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl"
+              >
                 Exploration
               </button>
-              <button type="button" className="btn btn-primary text-secondary">
+              <button
+                type="button"
+                className="btn btn-neutral sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl min-w-full"
+              >
                 Medical
               </button>
             </div>

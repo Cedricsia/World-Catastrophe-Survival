@@ -142,7 +142,7 @@ function Eshop({ chatModal, setChatModal }) {
   return (
     <div className="flex flex-col mt-7 w-screen md:w-full">
       <div className="bg-primary flex justify-end px-2  md:h-[160px] md:bg-inherit">
-        <h1 className="bg-primary text-secondary text-3xl md:mt-10 md:hidden p-2">
+        <h1 className="bg-primary text-secondary text-3xl  md:mt-10 md:hidden p-2">
           eShop
         </h1>
         <button type="button" onClick={changeView}>
@@ -197,8 +197,14 @@ function Eshop({ chatModal, setChatModal }) {
                   <div className="ml-3 md:ml-0" key={uuidv4()}>
                     <button
                       type="button"
-                      className="btn btn-primary w-36 h-10 md:flex text-secondary md:text-xl md:w-40"
-                      onClick={() => setSelectedCategory(cat)}
+                      className={`btn btn-primary sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl ${
+                        selectedCategory === cat ? "btn-primary" : "btn-neutral"
+                      }`}
+                      onClick={() =>
+                        setSelectedCategory(
+                          cat === selectedCategory ? null : cat
+                        )
+                      }
                     >
                       {cat}
                     </button>
@@ -474,4 +480,4 @@ function Eshop({ chatModal, setChatModal }) {
   );
 }
 export default Eshop;
-/*esl-int-disable*/
+/*eslint-disable*/
