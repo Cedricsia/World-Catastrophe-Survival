@@ -120,9 +120,11 @@ app.use(
 /*
 app.get("*", (req, res) => {
   res.sendFile(`${reactBuildPath}/index.html`);
-});
+}); 
 */
-
+app.use(
+  "/profiles",
+  express.static(path.join(__dirname, "../public/assets/images/profiles"))
+);
 /* ************************************************************************* */
-
 module.exports = app;

@@ -24,4 +24,14 @@ const read = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read };
+const browseTrainings = async (req, res, next) => {
+  try {
+    const [trainings] = await tables.training.getTraining();
+
+    res.json(trainings);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { browse, read, browseTrainings };

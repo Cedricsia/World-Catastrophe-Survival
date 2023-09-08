@@ -39,7 +39,7 @@ CREATE TABLE
         `category` VARCHAR(64) NOT NULL,
         `difficulty` VARCHAR(64) NOT NULL,
         `content` TEXT NOT NULL,
-        `image` VARCHAR(100)NOT NULL,
+        `image` VARCHAR(100) NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -113,23 +113,23 @@ CREATE TABLE
         CONSTRAINT `fk_training_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `day`(
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`id`)
+CREATE TABLE
+    IF NOT EXISTS `day`(
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(10) NOT NULL,
+        PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `booked_training` (
+CREATE TABLE
+    IF NOT EXISTS `booked_training` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `start_time` DATETIME NOT NULL,
         `end_time` DATETIME NOT NULL,
         `impairment` VARCHAR(64) NULL,
-        `day_id` INT NOT NULL,
         `training_id` INT NOT NULL,
         `teacher_id` INT NOT NULL,
         `user_id` INT NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_lesson_day` FOREIGN KEY (`day_id`) REFERENCES `day` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
         CONSTRAINT `fk_lesson_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -145,12 +145,12 @@ CREATE TABLE
         CONSTRAINT `fk_training_time_training` FOREIGN KEY (`training_id`) REFERENCES `training` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `event` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(64) NOT NULL,
-    PRIMARY KEY (`id`)
+CREATE TABLE
+    IF NOT EXISTS `event` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `title` VARCHAR(64) NOT NULL,
+        PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
-
 
 INSERT INTO
     `bestiary` (
@@ -206,7 +206,7 @@ VALUES (
         'How to deal with humanoid threat',
         'Combat',
         'Medium',
-        'Sample', 
+        'Sample',
         'Combat.png'
     ), (
         'Rat cooking course',
@@ -215,43 +215,43 @@ VALUES (
         'Sample',
         'Exploration.png'
 
-    ), (
-        'Limb amputation workshop',
-        'Medical',
-        'Hard',
-        'Sample',
-        'Medical.png'
-    ), (
-        'Build a barricade',
-        'Medium',
-        'Engineering',
-        'Sample',
-        'Engineering.png'
-    ), (
-        'Flying ennemies',
-        'Combat',
-        'Medium',
-        'Sample',
-        'Combat.png'
-    ), (
-        'Food poisoning',
-        'Medical',
-        'Easy',
-        'Sample',
-        'Medical.png'
-    ), (
-        'Firearms maintenance',
-        'Engineering',
-        'Easy',
-        'Sample',
-        "Engineering.png"
-    ), (
-        "Safe exploration techniques",
-        'Exploration',
-        'Hard',
-        'Sample',
-        'Exploration.png'
-    );
+), (
+    'Limb amputation workshop',
+    'Medical',
+    'Hard',
+    'Sample',
+    'Medical.png'
+), (
+    'Build a barricade',
+    'Medium',
+    'Engineering',
+    'Sample',
+    'Engineering.png'
+), (
+    'Flying ennemies',
+    'Combat',
+    'Medium',
+    'Sample',
+    'Combat.png'
+), (
+    'Food poisoning',
+    'Medical',
+    'Easy',
+    'Sample',
+    'Medical.png'
+), (
+    'Firearms maintenance',
+    'Engineering',
+    'Easy',
+    'Sample',
+    "Engineering.png"
+), (
+    "Safe exploration techniques",
+    'Exploration',
+    'Hard',
+    'Sample',
+    'Exploration.png'
+);
 
 INSERT INTO
     `item` (
@@ -380,7 +380,7 @@ VALUES (
         29.99,
         'Weapons',
         'Wooden bat, contondent weapon effective against a wide array of threats. Can also be used to play baseball.',
-        'arbalete1.png'
+        'lucile1.png'
     ), (
         'Beef meat',
         19.99,
@@ -644,9 +644,48 @@ VALUES (
         'Easy',
         7
     );
-    
-    INSERT INTO `day` (name) VALUES ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday');
-    
-    INSERT INTO `booked_training` (start_time, end_time, impairment, day_id, training_id, teacher_id, user_id) VALUES ('2023-09-11 10:00:00', '2023-09-11 12:00:00', 'visual', 2, 1, 3, 1), ('2023-09-11 12:00:00', '2023-09-11 14:00:00', 'visual', 3, 4, 2, 1), ('2023-09-11 16:00:00', '2023-09-11 18:00:00', 'visual', 1, 1, 1, 1), ('2023-09-11 18:00:00', '2023-09-11 20:00:00', 'visual', 4, 5, 4, 1);
 
-    INSERT INTO `event` (title) VALUES ('Zombie Invasion'), ('Meteor Shower'), ('Volcanic Eruption'), ('Tsunami'), ('Nuclear Blast');
+INSERT INTO `day` (name)
+VALUES ('Monday'), ('Tuesday'), ('Wednesday'), ('Thursday'), ('Friday');
+
+INSERT INTO
+    `booked_training` (
+        start_time,
+        end_time,
+        impairment,
+        training_id,
+        teacher_id,
+        user_id
+    )
+VALUES (
+        '2023-09-11 10:00:00',
+        '2023-09-11 12:00:00',
+        'visual',
+        1,
+        3,
+        1
+    ), (
+        '2023-09-11 12:00:00',
+        '2023-09-11 14:00:00',
+        'visual',
+        4,
+        2,
+        1
+    ), (
+        '2023-09-11 16:00:00',
+        '2023-09-11 18:00:00',
+        'visual',
+        1,
+        1,
+        1
+    ), (
+        '2023-09-11 18:00:00',
+        '2023-09-11 20:00:00',
+        'visual',
+        5,
+        4,
+        1
+    );
+
+INSERT INTO `event` (title)
+VALUES ('Zombie Invasion'), ('Meteor Shower'), ('Volcanic Eruption'), ('Tsunami'), ('Nuclear Blast');

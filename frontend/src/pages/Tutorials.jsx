@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TutoCard from "../components/TutoCard";
@@ -99,7 +100,11 @@ function Tutorials() {
                     }
                   >
                     {elem}
-                    <img src={`../assets/${elem}.svg`} alt="" />
+                    <img
+                      // src={`../assets/${elem}.svg`}
+                      alt="Difficulty icon"
+                      className="text-sm"
+                    />
                   </button>
                 </div>
               ))}
@@ -110,7 +115,7 @@ function Tutorials() {
       {tutorials && (
         <div className="flex flex-col mt-3 md:grid md:grid-cols-3 gap-1 mx-10">
           {filterTutorials().map((tuto) => (
-            <div className="" key={tuto.id}>
+            <div key={tuto.id}>
               <TutoCard tuto={tuto} />
             </div>
           ))}

@@ -35,4 +35,17 @@ const read = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, browseByUser };
+const book = async (req, res, next) => {
+  try {
+    const [result] = await tables.booked_training.createOne(req.body);
+    if (result.affectedRows) {
+      res.status(201).send({ id: result.insertId, ...req.body });
+    } else {
+      res.sendStatus(500);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { browse, read, book, browseByUser };
