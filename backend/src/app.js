@@ -1,7 +1,8 @@
 // Load the express module to create a web application
-
+/*eslint-disable*/
+const cors = require("cors");
 const express = require("express");
-
+const path = require("path");
 const app = express();
 
 // Configure it
@@ -12,8 +13,6 @@ const app = express();
 
 // CORS (Cross-Origin Resource Sharing) is a security mechanism in web browsers that blocks requests from a different domain than the server.
 // You may find the following magic line in forums:
-
-// app.use(cors());
 
 // You should NOT do that: such code uses the `cors` module to allow all origins, which can pose security issues.
 // For this pedagogical template, the CORS code is commented out to show the need for defining specific allowed origins.
@@ -27,17 +26,13 @@ const app = express();
 
 // const cors = require("cors");
 
-/*
 app.use(
   cors({
-    origin: [
-      process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
-    ]
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
-*/
 
 /* ************************************************************************* */
 
@@ -54,7 +49,7 @@ app.use(
 
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
@@ -89,6 +84,11 @@ app.use(
 const router = require("./router");
 
 app.use("/api", router);
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 
 /* ************************************************************************* */
 
@@ -107,20 +107,24 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
-// const reactBuildPath = `${__dirname}/../../frontend/dist`;
-
 // serve react resources
 
 // app.use(express.static(reactBuildPath));
 
 // redirect unhandled requests to the react index file
-
+app.use("/", express.static(path.join(__dirname, "../public")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 /*
 app.get("*", (req, res) => {
   res.sendFile(`${reactBuildPath}/index.html`);
-});
+}); 
 */
-
+app.use(
+  "/profiles",
+  express.static(path.join(__dirname, "../public/assets/images/profiles"))
+);
 /* ************************************************************************* */
-
 module.exports = app;

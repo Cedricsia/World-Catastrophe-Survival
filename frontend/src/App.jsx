@@ -1,40 +1,26 @@
-import Counter from "./components/Counter";
-import logo from "./assets/logo.svg";
-
+/* eslint-disable import/no-unresolved */
+import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import SidebarMobile from "./components/SidebarMobile";
+import Router from "./routes/Router";
+/* eslint-disable import/extensions */
+import ChatModal from "./components/ChatModal";
 
 function App() {
+  const [sidebar, setSidebar] = useState(false);
+  const [chatModal, setChatModal] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React !</p>
+    <div className="font-noto lg:flex min-h-screen   ">
+      <Navbar setSidebar={setSidebar} sidebar={sidebar} />
+      <Sidebar />
+      {sidebar && <SidebarMobile setSidebar={setSidebar} sidebar={sidebar} />}
 
-        <Counter />
-
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <div className=" w-full lg:ml-[17rem] flex justify-center">
+        <Router chatModal={chatModal} setChatModal={setChatModal} />
+        {chatModal && <ChatModal chatModal={chatModal} />}
+      </div>
     </div>
   );
 }
