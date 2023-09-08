@@ -141,10 +141,12 @@ function Eshop({ chatModal, setChatModal }) {
 
   return (
     <div className="flex flex-col mt-7 w-screen md:w-full">
-      <div className="bg-primary flex justify-between px-2 md:hidden">
-        <h1 className="bg-primary text-secondary text-3xl p-2">eShop</h1>
-        <button type="button">
-          <img src={shop} alt="shop-icon" className="h-10" />
+      <div className="bg-primary flex justify-end px-2  md:h-[160px] md:bg-inherit">
+        <h1 className="bg-primary text-secondary text-3xl md:text-5xl md:mt-10 md:hidden p-2">
+          eShop
+        </h1>
+        <button type="button" onClick={changeView}>
+          <img src={shop} alt="shop-icon" className="h-20 m-2 hidden md:flex" />
         </button>
       </div>
       <div className="md:mt-5">
@@ -169,21 +171,24 @@ function Eshop({ chatModal, setChatModal }) {
           )}
         </div>
         {visibleFilter && (
-          <div className="bg-accent md:bg-base-100 ">
+          <div className="bg-accent md:bg-base-100  md:my-4">
             <div className="hidden md:flex md:mb-10 md:ml-10">
-              <div className="hidden md:flex flex-row md:ml-96">
-                <img src={AI} alt="AI" />
-                <h1 className="ml-10 text-4xl p-3 rounded bg-accent w-[660px]">
-                  We are using AI to detect your mood and suggest you the best!!
-                  <button
-                    onClick={() => setChatModal(true)}
-                    type="button"
-                    className="p-1 mt-4 w-[150px] h-24 text-2xl bg-primary text-secondary rounded-lg ml-[450px]"
-                  >
-                    UNLOCK IT!
-                  </button>
-                </h1>
-              </div>
+              {!chatModal && (
+                <div className="hidden md:flex flex-row md:ml-96">
+                  <img src={AI} alt="AI" />
+                  <h1 className="ml-10 text-4xl p-3 rounded bg-accent w-[660px]">
+                    We are using AI to detect your mood and suggest you the
+                    best!!
+                    <button
+                      onClick={() => setChatModal(true)}
+                      type="button"
+                      className="p-1 mt-4 w-[150px] h-24 text-2xl bg-primary text-secondary rounded-lg ml-[450px]"
+                    >
+                      UNLOCK IT!
+                    </button>
+                  </h1>
+                </div>
+              )}
             </div>
             <h1 className="text-2xl text-neutral md:hidden">Categories:</h1>
             <div className="flex flex-col gap-1 md:flex-wrap md:flex-row md:gap-3 md:justify-center p-2">
@@ -330,51 +335,53 @@ function Eshop({ chatModal, setChatModal }) {
         </div>
         {visibleCart && (
           <div>
-            {cart.map((item) => (
-              <div
-                key={uuidv4()}
-                className="flex flex-col border-2 rounded border-neutral m-2 p-2"
-              >
-                <div className="flex">
-                  <img
-                    src={`${import.meta.env.VITE_BACKEND_URL}/images/items/${
-                      item.picture
-                    }`}
-                    alt={item.name}
-                    className="w-1/4 object-contain"
-                  />
-                  <div className="flex flex-col justify-around">
-                    <h3 className="text-primary font-bold text-2xl">
-                      {item.name}
-                    </h3>
-                    <p className="text-neutral font-bold text-xl">
-                      Category :{item.category}
+            <div className="md: flex flex-row flex-wrap">
+              {cart.map((item) => (
+                <div
+                  key={uuidv4()}
+                  className="flex flex-col border-2 rounded border-neutral m-2 p-2 md:w-[460px] "
+                >
+                  <div className="flex ">
+                    <img
+                      src={`${import.meta.env.VITE_BACKEND_URL}/images/items/${
+                        item.picture
+                      }`}
+                      alt={item.name}
+                      className="w-1/4 object-contain"
+                    />
+                    <div className="flex flex-col justify-around">
+                      <h3 className="text-primary font-bold text-2xl">
+                        {item.name}
+                      </h3>
+                      <p className="text-neutral font-bold text-xl">
+                        Category :{item.category}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-row mt-1">
+                    <p className="text-primary font-bold text-xl ">Quantity:</p>
+                    <p className="text-neutral font-bold text-2xl ml-5">
+                      {itemQuantities[item.name] || 1}
                     </p>
                   </div>
+                  <div className="flex flex-row mt-1">
+                    <p className="text-primary font-bold text-xl">Price :</p>
+                    <p className="text-neutral font-bold text-2xl ml-5">
+                      {item.price} €
+                    </p>
+                  </div>
+                  <div className="flex justify-end">
+                    <button
+                      className="bg-primary mt-1 border rounded-lg h-10 w-28 text-lg text-secondary"
+                      type="button"
+                      onClick={() => removeFromCart(item.name)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-                <div className="flex flex-row mt-1">
-                  <p className="text-primary font-bold text-xl ">Quantity:</p>
-                  <p className="text-neutral font-bold text-2xl ml-5">
-                    {itemQuantities[item.name] || 1}
-                  </p>
-                </div>
-                <div className="flex flex-row mt-1">
-                  <p className="text-primary font-bold text-xl">Price :</p>
-                  <p className="text-neutral font-bold text-2xl ml-5">
-                    {item.price} €
-                  </p>
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    className="bg-primary mt-1 border rounded-lg h-10 w-28 text-lg text-secondary"
-                    type="button"
-                    onClick={() => removeFromCart(item.name)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
             <div className="border-2 rounded border-gray-300 m-2 p-4">
               <h1 className="text-primary font-bold text-xl mb-4">
                 Delivery address :
@@ -444,17 +451,17 @@ function Eshop({ chatModal, setChatModal }) {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col ">
-              <p className="text-2xl ">
+            <div className="flex flex-col md:flex-row md:justify-between md:mb-2">
+              <p className="text-2xl mx-2 my-2 md:text-4xl">
                 Total Price:{" "}
-                <span className="font-bold text-primary  text-3xl">
-                  {totalPrice.toFixed(2)}€
+                <span className="font-bold text-primary  text-3xl md:text-5xl">
+                  {totalPrice ? totalPrice.toFixed(2) : "0"} €
                 </span>
               </p>
               <button
                 onClick={checkout}
                 type="button"
-                className="mt-2 mx-2 my-3 bg-primary  border rounded-lg h-12 w-32 text-2xl text-secondary"
+                className="mt-2 mx-2 my-3 bg-primary  border rounded-lg h-12 w-32 text-2xl text-secondary md:text-5xl md:h-20 md:w-80"
               >
                 CheckOut
               </button>
