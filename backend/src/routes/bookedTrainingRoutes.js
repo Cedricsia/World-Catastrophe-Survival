@@ -10,4 +10,6 @@ router.get("/:id", bookedTrainingControllers.read);
 
 router.post("/new", bookedTrainingControllers.book);
 
+router.get("/user/:id", bookedTrainingControllers.browseByUser);
+
 module.exports = router;
