@@ -113,7 +113,7 @@ function Tutorials() {
         )}
       </div>
       {tutorials && (
-        <div className="flex flex-col mt-3 md:grid md:grid-cols-2 gap-1 mx-10">
+        <div className="flex flex-col mt-3 md:grid md:grid-cols-3 gap-1 mx-10">
           {filterTutorials().map((tuto) => (
             <div key={tuto.id}>
               <TutoCard tuto={tuto} />
