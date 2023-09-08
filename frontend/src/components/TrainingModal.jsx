@@ -230,39 +230,46 @@ export default function TrainingModal({
 
   return (
     <dialog
-      className="h-full w-full "
+      className="h-full w-full md:h-4/5 md:w-2/5 rounded-xl bg-base-100 "
       ref={modalRef}
       onKeyDown={handleKeyDown}
       role="presentation"
     >
       <div>
-        <h3>{title}</h3>
-        <div className="flex">
+        <h3 className="bg-primary h-16 text-secondary text-3xl  font-bold text-center py-2">
+          {title}
+        </h3>
+        <div className="flex items-center text-neutre text-xl">
           <img
             src={`${
               import.meta.env.VITE_BACKEND_URL
             }/profiles/${profilepicture}`}
             alt={(firstname, lastname)}
+            className="m-1 h-28 md:h-56 "
           />
           <p>{description}</p>
         </div>
       </div>
-      <div>
-        <span>Teacher: </span>
-        <span> {firstname} </span>
-        <span>{lastname}</span>
+      <div className="my-3 text-xl">
+        <div className="flex justify-center">
+          <span>Teacher: </span>
+          <span> {firstname} </span>
+          <span>{lastname}</span>
+        </div>
+        <div className="flex justify-center">
+          <span>Category: </span>
+          <span> {category} </span>
+        </div>
       </div>
-      <div>
-        <span>Category: </span>
-        <span> {category} </span>
-      </div>
-      <h3>Choose a lesson adaptation: </h3>
-      <div className="flex">
+      <h3 className="flex justify-center text-xl my-2 font-bold">
+        Choose a lesson adaptation:{" "}
+      </h3>
+      <div className="flex md:justify-center md:gap-5">
         {canVisual !== 0 && (
           <button
             type="button"
             onClick={() => changeAdaptation("Visual")}
-            className={`m-5 p-2 bg-primary text-secondary text-lg font-bold rounded-md ${
+            className={` ml-1  h-20 bg-primary text-secondary text-lg font-bold rounded-md ${
               adaptation === "Visual"
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
@@ -288,7 +295,7 @@ export default function TrainingModal({
           <button
             type="button"
             onClick={() => changeAdaptation("Motor")}
-            className={`m-5 p-2 bg-primary text-secondary text-lg font-bold rounded-md ${
+            className={`ml-1  h-20 bg-primary text-secondary text-lg font-bold rounded-md${
               adaptation === "Motor"
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
@@ -301,7 +308,7 @@ export default function TrainingModal({
           <button
             type="button"
             onClick={() => changeAdaptation("Cognitive")}
-            className={`m-5 p-2 bg-primary text-secondary text-lg font-bold rounded-md ${
+            className={`ml-1  h-20 bg-primary text-secondary text-lg font-bold rounded-md ${
               adaptation === "Cognitive"
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
@@ -311,10 +318,14 @@ export default function TrainingModal({
           </button>
         )}
       </div>
-      <h3>Choose your lesson date</h3>
-      <div className="flex">
+      <h3 className="flex justify-center">Choose your lesson date:</h3>
+      <div className="flex justify-center mt-5 gap-10 mb-10 text-xl">
         <div className="flex flex-col">
-          <button type="button" onClick={nextMonth}>
+          <button
+            type="button"
+            onClick={nextMonth}
+            className="flex justify-center"
+          >
             <svg
               width="50"
               height="50"
@@ -333,7 +344,58 @@ export default function TrainingModal({
             </svg>
           </button>
           <p>{month.mo}</p>
-          <button type="button" onClick={prevMonth}>
+          <button
+            type="button"
+            onClick={prevMonth}
+            className="flex justify-center"
+          >
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="25" cy="25" r="23.4375" fill="#2B529B" />
+              <path
+                d="M12.5 25H37.5"
+                stroke="#E5B01E"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="flex flex-col">
+          <button
+            type="button"
+            onClick={nextDay}
+            className="flex justify-center"
+          >
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="25" cy="25" r="23.4375" fill="#2B529B" />
+              <path
+                d="M12.5 25H25M25 25H37.5M25 25V12.5M25 25V37.5"
+                stroke="#E5B01E"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <p className="flex justify-center">{day}</p>
+          <button
+            type="button"
+            onClick={prevDay}
+            className="flex justify-center"
+          >
             {" "}
             <svg
               width="50"
@@ -354,7 +416,11 @@ export default function TrainingModal({
           </button>
         </div>
         <div className="flex flex-col">
-          <button type="button" onClick={nextDay}>
+          <button
+            type="button"
+            onClick={nextYear}
+            className="flex justify-center"
+          >
             <svg
               width="50"
               height="50"
@@ -372,49 +438,12 @@ export default function TrainingModal({
               />
             </svg>
           </button>
-          <p>{day}</p>
-          <button type="button" onClick={prevDay}>
-            {" "}
-            <svg
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="25" cy="25" r="23.4375" fill="#2B529B" />
-              <path
-                d="M12.5 25H37.5"
-                stroke="#E5B01E"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="flex flex-col">
-          <button type="button" onClick={nextYear}>
-            <svg
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="25" cy="25" r="23.4375" fill="#2B529B" />
-              <path
-                d="M12.5 25H25M25 25H37.5M25 25V12.5M25 25V37.5"
-                stroke="#E5B01E"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <p>{year}</p>
-          <button type="button" onClick={prevYear}>
-            {" "}
+          <p className="flex justify-center">{year}</p>
+          <button
+            type="button"
+            onClick={prevYear}
+            className="flex justify-center"
+          >
             <svg
               width="50"
               height="50"
@@ -434,12 +463,18 @@ export default function TrainingModal({
           </button>
         </div>
       </div>
-      <button type="button" onClick={changeAvailability}>
-        {" "}
+
+      <button
+        type="button"
+        onClick={changeAvailability}
+        className="btn btn-primary text-secondary flex mx-auto mb-8 text-xl "
+      >
         Check availability that day
       </button>
-      {availability !== 0 && <h3>Choose start time</h3>}
-      <div>
+      {availability !== 0 && (
+        <h3 className="flex  justify-center ">Choose start time</h3>
+      )}
+      <div className="flex justify-center gap-3 my-2">
         {availability > 0 && (
           <button
             type="button"
@@ -456,7 +491,7 @@ export default function TrainingModal({
         {availability > 0 && availability !== 3 && (
           <button
             type="button"
-            className={`h-16 w-16 bg-primary text-secondary text-xl font-bold rounded-full ${
+            className={`h-16 w-16 p-1 bg-primary text-secondary text-xl font-bold rounded-full ${
               time === 10
                 ? "border-secondary border-8 outline outline-2 outline-solid  outline-primary"
                 : ""
@@ -493,12 +528,20 @@ export default function TrainingModal({
           </button>
         )}
       </div>
-      <div className="flex ">
-        <button type="button" onClick={handleBooking}>
+      <div className="flex  justify-center gap-8 mb-8 ">
+        <button
+          type="button"
+          onClick={handleBooking}
+          className="btn btn-primary text-secondary"
+        >
           Book lesson
         </button>
 
-        <button type="button" onClick={handleCloseModal} className="">
+        <button
+          type="button"
+          onClick={handleCloseModal}
+          className="btn btn-primary text-secondary"
+        >
           Cancel
         </button>
       </div>
