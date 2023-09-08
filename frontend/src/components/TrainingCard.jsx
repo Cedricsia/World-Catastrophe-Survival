@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+
 import { useState } from "react";
 import TrainingModal from "./TrainingModal";
 
