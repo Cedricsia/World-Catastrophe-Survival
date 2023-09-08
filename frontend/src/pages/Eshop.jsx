@@ -283,10 +283,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className=" w-20 md:hidden m-2"
                   />
                 </div>
-                <p className="mt-2 text-neutral text-lg">
-                  Description: {item.description}
-                </p>
-
+                <p className="mt-2 text-neutral text-lg">{item.description}</p>
                 <div className="flex items-center justify-start gap-12 mx-2 mt-3">
                   <div className="flex gap-4 items-center">
                     <p className="text-primary text-lg font-bold">Quantity :</p>
@@ -470,7 +467,7 @@ function Eshop({ chatModal, setChatModal }) {
                 type="button"
                 className="mt-2 mx-2 my-3 bg-primary  border rounded-lg h-12 w-32 text-2xl text-secondary md:text-5xl md:h-20 md:w-80"
               >
-                CheckOut
+                Check Out
               </button>
               <ToastContainer />
             </div>
