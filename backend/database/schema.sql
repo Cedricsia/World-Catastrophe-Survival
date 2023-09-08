@@ -68,6 +68,7 @@ CREATE TABLE
         `zipcode` VARCHAR(64) NULL,
         `city` VARCHAR(64) NULL,
         `country` VARCHAR(64) NULL,
+        `picture` VARCHAR(250) NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -441,12 +442,14 @@ INSERT INTO
     `user` (
         `username`,
         `email`,
-        `password`
+        `password`,
+        `picture`
     )
 VALUES (
         "Cool User",
         "user@user.fr",
-        "user"
+        "user",
+        "insomnia.png"
     );
 
 INSERT INTO
