@@ -72,7 +72,7 @@ function Profile() {
   };
 
   return (
-    <div className="mt-20 flex flex-col items-center w-full gap-2">
+    <div className="mt-20 mb-5 flex flex-col items-center w-full gap-2">
       <div className="w-full h-14 bg-primary flex justify-center items-center lg:hidden">
         <h1 className="text-3xl font-bold text-secondary lg:hidden">Profile</h1>
       </div>
