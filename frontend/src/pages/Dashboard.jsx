@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import formatTime from "../services/formatTime";

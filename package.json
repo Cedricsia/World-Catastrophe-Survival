@@ -32,6 +32,7 @@
     "husky": "^8.0.3"
   },
   "dependencies": {
+    "react-agenda-calendar": "^1.1.2",
     "uuid": "^9.0.0"
   }
 }
