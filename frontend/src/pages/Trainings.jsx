@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 /* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import TrainingCard from "../Components/TrainingCard";
 
 function Trainings() {
