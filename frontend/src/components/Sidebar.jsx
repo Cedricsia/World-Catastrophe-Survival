@@ -34,131 +34,130 @@ function Sidebar() {
   };
 
   return (
-    <div className="lg:flex lg:flex-col lg:justify-between lg:items-center lg:bg-primary lg:w-[17rem] lg:h-full lg:min-h-screen lg:py-3 lg:fixed hidden">
-      <div className="w-full">
-        <div className="flex flex-col items-center gap-2">
-          <Link to="/">
-            <img src={logo} alt="logo-wcs" className="w-44" />
-          </Link>
+    <nav>
+      <div className="lg:flex lg:flex-col lg:justify-between lg:items-center lg:bg-primary lg:w-[17rem] lg:h-full lg:min-h-screen lg:py-3 lg:fixed hidden">
+        <div className="w-full">
+          <div className="flex flex-col items-center gap-2">
+            <Link to="/">
+              <img src={logo} alt="logo-wcs" className="w-44" />
+            </Link>
+          </div>
+
+          {user && (
+            <div>
+              <Link to="/profile" className="flex flex-col items-center">
+                <img src={profile} alt="profile-pic" className="w-44 my-4" />
+                <p className="text-base-100">{user.username}</p>
+              </Link>
+              <ul className="flex flex-col w-full my-5">
+                <NavLink to="/dashboard">
+                  {({ isActive }) => (
+                    <div
+                      className={`flex items-center pl-10 gap-2 pb-2 border-t-2 border-secondary ${
+                        isActive ? "bg-secondary" : ""
+                      }`}
+                    >
+                      <img
+                        src={isActive ? blueBrain : brain}
+                        alt={isActive ? "blue-brain" : "brain"}
+                      />
+                      <h1
+                        className={`text-xl font-bold ${
+                          isActive ? "text-primary" : "text-base-100"
+                        }`}
+                      >
+                        Dashboard
+                      </h1>
+                    </div>
+                  )}
+                </NavLink>
+                <NavLink to="/tutorials">
+                  {({ isActive }) => (
+                    <div
+                      className={`flex items-center pl-10 gap-2 py-1 border-t-2 border-secondary ${
+                        isActive ? "bg-secondary" : ""
+                      }`}
+                    >
+                      <img
+                        src={isActive ? blueBook : book}
+                        alt={isActive ? "blue-book" : "book"}
+                      />
+                      <h1
+                        className={`text-xl font-bold ${
+                          isActive ? "text-primary" : "text-base-100"
+                        }`}
+                      >
+                        Tutorials
+                      </h1>
+                    </div>
+                  )}
+                </NavLink>
+                <NavLink to="/trainings">
+                  {({ isActive }) => (
+                    <div
+                      className={`flex items-center pl-10 gap-2 py-1 border-t-2 border-secondary ${
+                        isActive ? "bg-secondary" : ""
+                      }`}
+                    >
+                      <img
+                        src={isActive ? blueTrain : train}
+                        alt={isActive ? "blue-train" : "trainning page"}
+                      />
+                      <h1
+                        className={`text-xl font-bold ${
+                          isActive ? "text-primary" : "text-base-100"
+                        }`}
+                      >
+                        Trainings
+                      </h1>
+                    </div>
+                  )}
+                </NavLink>
+                <NavLink to="/eshop">
+                  {({ isActive }) => (
+                    <div
+                      className={`flex items-center pl-10 gap-2 py-1 border-y-2 border-secondary ${
+                        isActive ? "bg-secondary" : ""
+                      }`}
+                    >
+                      <img
+                        src={isActive ? blueShop : shop}
+                        alt={isActive ? "blue-shop" : "shop page"}
+                      />
+                      <h1
+                        className={`text-xl font-bold ${
+                          isActive ? "text-primary" : "text-base-100"
+                        }`}
+                      >
+                        e-Shop
+                      </h1>
+                    </div>
+                  )}
+                </NavLink>
+              </ul>
+            </div>
+          )}
         </div>
 
-        {user && (
-          <div>
-            <Link to="/profile" className="flex flex-col items-center">
-              <img src={profile} alt="profile-pic" className="w-44 my-4" />
-              <p className="text-base-100">{user.username}</p>
-            </Link>
-            <ul className="flex flex-col w-full my-5">
-              <NavLink to="/dashboard">
-                {({ isActive }) => (
-                  <div
-                    className={`flex items-center pl-10 gap-2 pb-2 border-t-2 border-secondary ${
-                      isActive ? "bg-secondary" : ""
-                    }`}
-                  >
-                    <img
-                      src={isActive ? blueBrain : brain}
-                      alt={isActive ? "blue-brain" : "brain"}
-                    />
-                    <p
-                      className={`text-xl font-bold ${
-                        isActive ? "text-primary" : "text-base-100"
-                      }`}
-                    >
-                      Dashboard
-                    </p>
-                  </div>
-                )}
-              </NavLink>
-              <NavLink to="/tutorials">
-                {({ isActive }) => (
-                  <div
-                    className={`flex items-center pl-10 gap-2 py-1 border-t-2 border-secondary ${
-                      isActive ? "bg-secondary" : ""
-                    }`}
-                  >
-                    <img
-                      src={isActive ? blueBook : book}
-                      alt={isActive ? "blue-book" : "book"}
-                    />
-                    <p
-                      className={`text-xl font-bold ${
-                        isActive ? "text-primary" : "text-base-100"
-                      }`}
-                    >
-                      Tutorials
-                    </p>
-                  </div>
-                )}
-              </NavLink>
-              <NavLink to="/trainings">
-                {({ isActive }) => (
-                  <div
-                    className={`flex items-center pl-10 gap-2 py-1 border-t-2 border-secondary ${
-                      isActive ? "bg-secondary" : ""
-                    }`}
-                  >
-                    <img
-                      src={isActive ? blueTrain : train}
-                      alt={isActive ? "blue-train" : "train"}
-                    />
-                    <p
-                      className={`text-xl font-bold ${
-                        isActive ? "text-primary" : "text-base-100"
-                      }`}
-                    >
-                      Trainings
-                    </p>
-                  </div>
-                )}
-              </NavLink>
-              <NavLink to="/eshop">
-                {({ isActive }) => (
-                  <div
-                    className={`flex items-center pl-10 gap-2 py-1 border-y-2 border-secondary ${
-                      isActive ? "bg-secondary" : ""
-                    }`}
-                  >
-                    <img
-                      src={isActive ? blueShop : shop}
-                      alt={isActive ? "blue-shop" : "shop"}
-                    />
-                    <p
-                      className={`text-xl font-bold ${
-                        isActive ? "text-primary" : "text-base-100"
-                      }`}
-                    >
-                      e-Shop
-                    </p>
-                  </div>
-                )}
-              </NavLink>
-            </ul>
+        {user ? (
+          <button
+            type="button"
+            className="flex items-center mb-4 gap-2"
+            onClick={handleDisconnect}
+          >
+            <img src={off} alt="disconnect-button" />
+            <h1 className="text-base-100 text-xl font-bold">Disconnect</h1>
+          </button>
+        ) : (
+          <div className="hover:border-b-4 hover:border-slate-800 hover:font-bold transition-all duration-300 mb-4">
+            <NavLink to="/signin" className="flex items-center gap-4">
+              <img src={on} alt="connexion-button" />
+              <p className="text-base-100 text-xl font-bold">Connexion</p>
+            </NavLink>
           </div>
         )}
       </div>
-      {/* <button type="button" className="flex items-center gap-2">
-        <img src={off} alt="disconnect-button" />
-        <p className="text-base-100">Disconnect</p>
-      </button> */}
-      {user ? (
-        <button
-          type="button"
-          className="flex items-center mb-4 gap-2"
-          onClick={handleDisconnect}
-        >
-          <img src={off} alt="disconnect-button" />
-          <p className="text-base-100 text-xl font-bold">Disconnect</p>
-        </button>
-      ) : (
-        <div className="hover:border-b-4 hover:border-slate-800 hover:font-bold transition-all duration-300 mb-4">
-          <NavLink to="/signin" className="flex items-center gap-4">
-            <img src={on} alt="connexion-button" />
-            <p className="text-base-100 text-xl font-bold">Connexion</p>
-          </NavLink>
-        </div>
-      )}
-    </div>
+    </nav>
   );
 }
 

@@ -30,7 +30,7 @@ function Dashboard() {
       </div>
       <div className="mt-5 lg:mt-0 w-full flex flex-col gap-5 items-center lg:items-start lg:flex-row lg:justify-around">
         <div className="w-11/12 lg:w-2/4 flex flex-col items-center">
-          <div className="w-full bg-secondary text-primary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
+          <div className="w-full bg-secondary text-primary text-center lg:text-3xl font-semibold py-3 px-4 rounded-t-lg">
             My Trainings
           </div>
 
@@ -38,21 +38,21 @@ function Dashboard() {
             {bookedTrainings &&
               bookedTrainings.map((training) => (
                 <div className="w-11/12">
-                  <div className="bg-primary text-secondary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
+                  <div className="bg-primary text-secondary text-center lg:text-3xl font-semibold py-2 px-4 rounded-t-lg">
                     {training.title}
                   </div>
                   <div className="p-2 border-x-2 border-b-2 border-primary rounded-b-lg">
-                    <p className="font-bold text-xl">
+                    <h1 className="font-bold text-xl">
                       {`${formatTime(training.start_time).date} | ${
                         formatTime(training.start_time).time
                       } - ${formatTime(training.end_time).time} :`}
-                    </p>
+                    </h1>
                     <div className="flex items-center my-1">
                       <img
                         src={`${
                           import.meta.env.VITE_BACKEND_URL
                         }/images/profiles/${training.profilepicture}`}
-                        alt="teacher"
+                        alt={`teacher ${training.booked_id}`}
                         className="w-16 mr-3"
                       />
                       <p>{training.description}</p>
@@ -63,7 +63,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="w-11/12 lg:w-1/3 flex flex-col items-center">
-          <div className="w-full bg-secondary text-primary text-center lg:text-xl font-semibold py-2 px-4 rounded-t-lg">
+          <div className="w-full bg-secondary text-primary text-center lg:text-3xl font-semibold py-2 px-4 rounded-t-lg">
             Incoming Events
           </div>
 
@@ -71,7 +71,7 @@ function Dashboard() {
             {events &&
               events.map((event) => (
                 <div className="w-11/12">
-                  <div className="bg-primary text-secondary text-center lg:text-xl font-semibold py-2 px-4 rounded-lg">
+                  <div className="bg-primary text-secondary text-center lg:text-2xl font-semibold py-2 px-4 rounded-lg h-">
                     {event.title}
                   </div>
                 </div>

@@ -42,7 +42,7 @@ function Tutorials() {
       <div className="bg-primary flex justify-between md:hidden">
         <h1 className="bg-primary text-secondary text-3xl p-2">Tutorials</h1>
         <button type="button" className="mr-2">
-          <img src={info} alt="" className="h-10" />
+          <img src={info} alt="Information" className="h-10" />
         </button>
       </div>
       <div>
@@ -50,11 +50,11 @@ function Tutorials() {
           <h1 className=" text-3xl text-neutral">Filters</h1>
           {visible ? (
             <button type="button" onClick={() => setVisible(false)}>
-              <img src={arrowUp} alt="" className="h-8 " />
+              <img src={arrowUp} alt="close filter" className="h-8 " />
             </button>
           ) : (
             <button type="button" onClick={() => setVisible(true)}>
-              <img src={arrowDown} alt="" className="h-8 " />
+              <img src={arrowDown} alt="open filter" className="h-8 " />
             </button>
           )}
         </div>
@@ -68,7 +68,7 @@ function Tutorials() {
                 <div className="ml-3 md:ml-0" key={cat}>
                   <button
                     type="button"
-                    className={`btn btn-primary w-36 h-10 md:flex text-secondary md:text-xl ${
+                    className={`btn btn-primary sm:w-36 sm:h-10 md:w-fit md:flex text-secondary md:text-2xl ${
                       selectedCategory === cat ? "btn-primary" : "btn-neutral"
                     }`}
                     onClick={() =>
@@ -88,7 +88,7 @@ function Tutorials() {
                 <div key={elem}>
                   <button
                     type="button"
-                    className={`btn btn-primary w-36 h-10 md:flex text-secondary md:text-xl ${
+                    className={`btn btn-primary w-36 h-10 md:w-fit md:flex text-secondary md:text-2xl ${
                       selectedDifficulty === elem
                         ? "btn-primary"
                         : "btn-neutral"
@@ -100,11 +100,6 @@ function Tutorials() {
                     }
                   >
                     {elem}
-                    <img
-                      // src={`../assets/${elem}.svg`}
-                      alt="Difficulty icon"
-                      className="text-sm"
-                    />
                   </button>
                 </div>
               ))}

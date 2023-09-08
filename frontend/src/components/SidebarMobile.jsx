@@ -148,7 +148,7 @@ function Sidebar({ setSidebar, sidebar }) {
           onClick={handleDisconnect}
         >
           <img src={off} alt="disconnect-button" />
-          <p className="text-base-100 text-xl font-bold">Disconnect</p>
+          <h1 className="text-base-100 text-xl font-bold">Disconnect</h1>
         </button>
       ) : (
         <div className="hover:border-b-4 hover:border-slate-800 hover:font-bold transition-all duration-300 mb-20">
@@ -158,7 +158,7 @@ function Sidebar({ setSidebar, sidebar }) {
             className="flex items-center gap-4"
           >
             <img src={on} alt="connexion-button" />
-            <p className="text-base-100 text-xl font-bold">Connexion</p>
+            <h1 className="text-base-100 text-xl font-bold">Connexion</h1>
           </NavLink>
         </div>
       )}
