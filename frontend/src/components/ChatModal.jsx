@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState } from "react";
 import Poto from "./Poto";
 
@@ -44,8 +45,8 @@ function ChatModal() {
         </svg>
       </button>
       {isModalOpen && (
-        <dialog id="my_modal_3" className="modal" open>
-          <div className="modal-box h-5/6 w-[552px]sm:w-[200px] bg-accent">
+        <dialog id="my_modal_3" className="modal " open>
+          <div className="modal-box h-5/6 md:w-[75%]   bg-accent">
             <form method="dialog" onSubmit={closeModal}>
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"

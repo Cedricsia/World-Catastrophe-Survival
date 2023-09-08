@@ -1,6 +1,7 @@
+/* eslint-disable*/
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import "regenerator-runtime";
 import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
 import App from "./App";
