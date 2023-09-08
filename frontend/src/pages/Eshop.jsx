@@ -141,8 +141,8 @@ function Eshop({ chatModal, setChatModal }) {
 
   return (
     <div className="flex flex-col mt-7 w-screen md:w-full">
-      <div className="bg-primary flex justify-end px-2  md:h-[160px] md:bg-inherit">
-        <h1 className="bg-primary text-secondary text-3xl md:mt-10 md:hidden p-2">
+      <div className="bg-primary flex justify-center px-2  md:h-[160px] md:bg-inherit">
+        <h1 className="bg-primary text-secondary font-bold text-3xl mt-10 md:hidden p-2">
           eShop
         </h1>
         <button type="button" onClick={changeView}>
@@ -150,7 +150,7 @@ function Eshop({ chatModal, setChatModal }) {
         </button>
       </div>
       <div className="md:mt-5">
-        <div className="bg-accent   border-2  border-b-neutral md:bg-base-100 md:hidden ">
+        <div className="bg-accent border-b-2 pb-2 border-b-neutral md:bg-base-100 md:hidden ">
           <h1 className="text-3xl text-neutral">
             My Basket
             <button type="button" onClick={changeView}>
@@ -260,12 +260,12 @@ function Eshop({ chatModal, setChatModal }) {
               >
                 <div className="flex justify-between">
                   <div className="flex flex-col">
-                    <h3 className="text-primary text-xl font-bold m-1">
+                    <h3 className="text-primary text-xl font-bold">
                       {item.name}
                     </h3>
 
-                    <h4 className="text-neutral font-bold text-xl">
-                      Category: {item.category}
+                    <h4 className="text-neutral font-bold text-xl mt-2">
+                      Category : {item.category}
                     </h4>
                   </div>
                   <img
@@ -283,14 +283,23 @@ function Eshop({ chatModal, setChatModal }) {
                     className=" w-20 md:hidden m-2"
                   />
                 </div>
-                <p className="mt-2">Description: {item.description}</p>
-
-                <div className="flex items-center justify-between mx-2">
-                  <p className="text-primary text-lg font-bold">Quantity:</p>
-                  <p className="text-2xl font-bold">
-                    {" "}
-                    {itemQuantities[item.name] || 1}
-                  </p>
+                <p className="mt-2 text-neutral text-lg">{item.description}</p>
+                <div className="flex items-center justify-start gap-12 mx-2 mt-3">
+                  <div className="flex gap-4 items-center">
+                    <p className="text-primary text-lg font-bold">Quantity :</p>
+                    <p className="text-neutral text-2xl font-bold">
+                      {" "}
+                      {itemQuantities[item.name] || 1}
+                    </p>
+                  </div>
+                  <div className="flex gap-4 items-center">
+                    <p className="text-primary text-lg font-bold">Price :</p>
+                    <p className="text-2xl text-neutral font-bold">
+                      {item.price} €
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-evenly mx-2 mt-2">
                   <button
                     type="button"
                     onClick={() =>
@@ -313,16 +322,11 @@ function Eshop({ chatModal, setChatModal }) {
                   >
                     <img src={minus} alt="minus-icon" />
                   </button>
-                </div>
-                <div className="flex justify-between mx-2">
-                  <p>Price:</p>
-                  <p className="text-2xl text-neutral font-bold pr-14">
-                    {item.price} €
-                  </p>
+
                   <div className="flex flex-col">
                     <div></div>
                     <button
-                      className="bg-primary mt-1 border rounded-lg h-10 w-28 text-lg text-secondary"
+                      className="bg-primary mt-1 border rounded-lg h-12 w-28 text-lg font-bold text-secondary"
                       type="button"
                       onClick={() => addToCart(item)}
                     >
@@ -463,7 +467,7 @@ function Eshop({ chatModal, setChatModal }) {
                 type="button"
                 className="mt-2 mx-2 my-3 bg-primary  border rounded-lg h-12 w-32 text-2xl text-secondary md:text-5xl md:h-20 md:w-80"
               >
-                CheckOut
+                Check Out
               </button>
               <ToastContainer />
             </div>
