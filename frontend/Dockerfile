@@ -12,9 +12,11 @@ ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 
 COPY ./frontend /usr/src/app
 
-RUN npm install vite-plugin-babel
 RUN npm install -g npm@10.2.0
+RUN npm install vite-plugin-babel
 RUN npm install
+# fixer react-speech-recognition pour vite
+
 RUN npm run build
 
 # production environment
