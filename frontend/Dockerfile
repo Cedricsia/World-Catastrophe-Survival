@@ -12,6 +12,7 @@ ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 
 COPY ./frontend /usr/src/app
 
+RUN npm install vite-plugin-babel
 RUN npm install -g npm@10.2.0
 RUN npm install
 RUN npm run build
