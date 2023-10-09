@@ -71,26 +71,6 @@ function Calendars() {
       title: "Solar Flare Storm",
       startDate: { day: 27, month: 9, year: 2023 },
     },
-    {
-      title: "Mega Earthquake",
-      startDate: { day: 5, month: 9, year: 2023 },
-    },
-    {
-      title: "Nanobot Infestation",
-      startDate: { day: 19, month: 9, year: 2023 },
-    },
-    {
-      title: "Gamma Ray Burst",
-      startDate: { day: 23, month: 9, year: 2023 },
-    },
-    {
-      title: "Black Hole Anomaly",
-      startDate: { day: 29, month: 9, year: 2023 },
-    },
-    {
-      title: "AI Singularity",
-      startDate: { day: 4, month: 9, year: 2023 },
-    },
   ]);
 
   const fetchAgenda = async () => {

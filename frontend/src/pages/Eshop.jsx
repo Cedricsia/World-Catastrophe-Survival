@@ -11,6 +11,8 @@ import arrowDown from "../assets/arrowDown.svg";
 import plus from "../assets/plus.svg";
 import minus from "../assets/minus.svg";
 import AI from "../assets/image5.svg";
+import { useUserContext } from "../contexts/UserContext";
+
 function Eshop({ chatModal, setChatModal }) {
   const [visibleFilter, setVisibleFilter] = useState(true);
   const [data, setData] = useState([]);
@@ -23,6 +25,8 @@ function Eshop({ chatModal, setChatModal }) {
   const [maxPrice, setMaxPrice] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [itemQuantities, setItemQuantities] = useState({});
+
+  const [user, setUser] = useUserContext();
 
   const removeFromCart = (itemName) => {
     const updatedCart = cart.filter((cartItem) => cartItem.name !== itemName);
@@ -57,6 +61,7 @@ function Eshop({ chatModal, setChatModal }) {
         "€"
     );
     setTotalPrice(0);
+    setCart([]);
   };
   const applyFilters = () => {
     let filteredItems = data.filter((item) => {
@@ -406,6 +411,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Street name"
+                    value={user.adress}
                   />
                 </div>
                 <div>
@@ -413,6 +419,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Zip Code"
+                    value={user.zipcode}
                   />
                 </div>
                 <div>
@@ -420,6 +427,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="City"
+                    value={user.city}
                   />
                 </div>
                 <div>
@@ -427,6 +435,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Country"
+                    value={user.country}
                   />
                 </div>
               </div>
@@ -440,6 +449,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Card owner"
+                    value={`${user.firstname} ${user.lastname}`}
                   />
                 </div>
                 <div>
@@ -447,6 +457,7 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Card Code"
+                    value="*********************"
                   />
                 </div>
                 <div>
@@ -454,12 +465,13 @@ function Eshop({ chatModal, setChatModal }) {
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
                     type="text"
                     placeholder="Expiration"
+                    value="2024 - 03"
                   />
                 </div>
                 <div>
                   <input
                     className="bg-gray-200 placeholder-gray-400 p-2 rounded w-full"
-                    type="text"
+                    type="password"
                     placeholder="CCV"
                   />
                 </div>

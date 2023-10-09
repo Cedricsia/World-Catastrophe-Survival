@@ -103,35 +103,6 @@ function Dashboard() {
       advice:
         "To survive a solar flare storm, just put on your gamma ray-blocking sunglasses!",
     },
-    {
-      title: "Mega Earthquake",
-      startDate: { day: 5, month: 9, year: 2023 },
-      advice: "For mega earthquakes, just do the limbo - how low can you go?",
-    },
-    {
-      title: "Nanobot Infestation",
-      startDate: { day: 19, month: 9, year: 2023 },
-      advice:
-        "When facing a nanobot infestation, just remember they have a 'pause' button... somewhere!",
-    },
-    {
-      title: "Gamma Ray Burst",
-      startDate: { day: 23, month: 9, year: 2023 },
-      advice:
-        "To survive a gamma ray burst, just put on your gamma ray-blocking sunglasses!",
-    },
-    {
-      title: "Black Hole Anomaly",
-      startDate: { day: 29, month: 9, year: 2023 },
-      advice:
-        "In case of a black hole, remember to bring a good book - you might have some time!",
-    },
-    {
-      title: "AI Singularity",
-      startDate: { day: 4, month: 9, year: 2023 },
-      advice:
-        "To outsmart AI, just challenge it to a game of rock-paper-scissors - they hate randomness!",
-    },
   ];
 
   useEffect(() => {
