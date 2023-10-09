@@ -12,11 +12,12 @@ ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 
 COPY ./frontend /usr/src/app
 
-RUN npm install -g pnpm
-RUN pnpm install
+
+RUN npm install -g npm@10.2.0 
+RUN npm install --force
 # fixer react-speech-recognition pour vite
 
-RUN pnpm run build
+RUN npm run build
 
 # production environment
 FROM nginx:1.25.2
